@@ -1,0 +1,69 @@
+font-family = ""
+
+# font-family = "Zed Plex Mono"
+# font-family = "Menlo"
+font-family = "CommitMonokuko"
+adjust-cell-height = 6
+
+font-style = Regular
+
+# font-family = "Liga SFMono Nerd Font"
+# adjust-cell-height = 2
+
+# font-family = "JetBrains Mono"
+# adjust-cell-height = 1
+
+# font-style = Semibold
+
+
+font-synthetic-style = bold-italic
+font-size = 12
+bold-is-bright = true
+
+font-feature = -liga
+font-feature = -calt
+font-feature = -dlig
+
+adjust-cell-width = -1
+adjust-underline-position = 2
+
+shell-integration-features = no-cursor
+cursor-style = block
+cursor-style-blink = true
+cursor-color = f3b87c
+
+window-height = 32
+window-width = 128
+window-theme = dark
+# macos-titlebar-style = transparent
+macos-titlebar-proxy-icon = visible
+
+# macos-icon = custom-style
+# macos-icon-frame = beige
+# macos-icon-ghost-color = 545762
+# macos-icon-screen-color = babec8
+macos-option-as-alt = left
+
+palette = 0=#272b33
+palette = 1=#ec6f92
+palette = 2=#c5e5a1
+palette = 3=#e8df49
+palette = 4=#a3dafb
+palette = 5=#c793de
+palette = 6=#9ce3ef
+palette = 7=#feffff
+palette = 8=#4c4c4c
+palette = 9=#ef8cae
+palette = 10=#c3dfa4
+palette = 11=#f9dc86
+palette = 12=#a4dbfb
+palette = 13=#c892de
+palette = 14=#95d9e4
+palette = 15=#feffff
+background = 1e1e2e
+foreground = cccccc
+selection-background = 545762
+selection-foreground = babec8
+
+background-opacity = 0.98
+# background-blur-radius = 10

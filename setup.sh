@@ -18,3 +18,4 @@ link "$(pwd)/helix" ~/.config/helix
 link "$(pwd)/nvim" ~/.config/nvim
 link "$(pwd)/btop" ~/.config/btop
 link "$(pwd)/tmux" ~/.config/tmux
+link "$(pwd)/ghostty" ~/.config/ghostty
