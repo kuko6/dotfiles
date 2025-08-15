@@ -2,18 +2,18 @@ font-family = ""
 
 # font-family = "Zed Plex Mono"
 # font-family = "Menlo"
-font-family = "CommitMonokuko"
-adjust-cell-height = 6
+# font-family = "CommitMonokuko"
+# adjust-cell-height = 6
 
-font-style = Regular
+# font-style = Regular
 
-# font-family = "Liga SFMono Nerd Font"
-# adjust-cell-height = 2
+font-family = "Liga SFMono Nerd Font"
+adjust-cell-height = 2
 
 # font-family = "JetBrains Mono"
 # adjust-cell-height = 1
 
-# font-style = Semibold
+font-style = Semibold
 
 
 font-synthetic-style = bold-italic
