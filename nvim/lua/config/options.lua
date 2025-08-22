@@ -8,7 +8,8 @@ vim.opt.showmode = true    -- Show current mode (like -- INSERT --
 vim.opt.scrolloff = 20     -- Minimal number of lines to keep above and below cursor
 
 -- UI Enhancements
-vim.opt.number = true     -- Show absolute line numbers
+vim.opt.number = true     -- Show line numbers
+vim.opt.relativenumber = false
 vim.opt.hlsearch = true   -- Highlight all search matches
 vim.opt.ignorecase = true -- Case-sensitive search (see smartcase)
 vim.opt.smartcase = true  -- Override ignorecase if search includes uppercase letters
