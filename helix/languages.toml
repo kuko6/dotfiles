@@ -1,38 +1,9 @@
-[[language]]
-name = "typescript"
-shebangs = ["deno"]
-roots = ["deno.json", "deno.jsonc", "package.json"]
-file-types = ["js", "ts", "jsx", "tsx"]
-auto-format = false
-language-servers = ["deno-lsp"]
+# LSP configs
 
 [language-server.deno-lsp]
 command = "deno"
 args = ["lsp"]
-environment = { NO_COLOR = "1" }
-
-[language-server.deno-lsp.config.deno]
-enable = true
-# Uncomment to enable completion of unstable features of Deno
-unstable = true
-# Uncomment to cache dependencies on save
-# cacheOnSave = true
-# Enable completion of importing from registries
-# Enable completion of function calls
-suggest = { completeFunctionCalls = false, imports = { hosts = { "https://deno.land" = true } } }
-# suggest = { imports = { hosts = { "https://deno.land" = true, "https://crux.land" = true, "https://x.nest.land" = true } } }
-# Uncomment to enable inlay hints
-inlayHints.parameterNames.enabled = "all"
-inlayHints.parameterTypes.enabled = true
-inlayHints.variableTypes.enabled = true
-inlayHints.propertyDeclarationTypes.enabled  = true
-inlayHints.functionLikeReturnTypes.enabled = true
-inlayHints.enumMemberValues.enabled = true
-
-[[language]]
-name = "python"
-language-servers = [ "pyright", "ruff" ]
-# language-servers = [ "pyrefly", "ruff" ]
+config.deno.enable = true
 
 [language-server.pyright.config.python.analysis]
 typeCheckingMode = "off"
@@ -59,10 +30,33 @@ dialect = "British"
 [language-server.harper-ls.config.harper-ls.linters]
 SentenceCapitalization = false
 
+[language-server.swiftlint]
+command = "swiftlint"
+
+[language-server.tinymist]
+command = "tinymist"
+
+[language-server.tinymist.config]
+typstExtraArgs = ["main.typ"]
+
+# Language configs
+
+[[language]]
+name = "python"
+language-servers = [ "pyright", "ruff" ]
+# language-servers = [ "pyrefly", "ruff" ]
+
 [[languages]]
 name = "go"
 auto-format = false
 formatter = { command = "goimports" }
+
+[[language]]
+name = "typescript"
+roots = ["deno.json", "deno.jsonc", "package.json"]
+file-types = ["ts"]
+auto-format = false
+language-servers = ["deno-lsp"]
 
 [[language]]
 name = "html"
@@ -85,19 +79,10 @@ name = "svelte"
 language-servers = [ "svelteserver", "tailwindcss-ls" ]
 block-comment-tokens = {start = "<!--", end = "-->"}
 
-[language-server.swiftlint]
-command = "swiftlint"
-
 [[language]]
 name = "swift"
 auto-format = true
 language-servers = ["sourcekit-lsp", "swiftlint"]
-
-[language-server.tinymist]
-command = "tinymist"
-
-[language-server.tinymist.config]
-typstExtraArgs = ["main.typ"]
 
 [[language]]
 name = "typst"
