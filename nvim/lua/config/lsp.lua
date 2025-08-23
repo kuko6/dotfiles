@@ -80,12 +80,21 @@ vim.lsp.config.sourcekit = {
     },
 }
 
+vim.lsp.config.deno = {
+  cmd = { 'deno', 'lsp' },
+  filetypes = { 'typescript' },
+  root_markers = { 'deno.json', 'deno.jsonc', 'package.json', '.git' },
+  single_file_support = true,
+  settings = {}
+}
+
 -- Enable LSPs
 vim.lsp.enable('pyright')
 vim.lsp.enable('ruff')
 vim.lsp.enable('tinymist')
 vim.lsp.enable('sourcekit')
 vim.lsp.enable('harper')
+vim.lsp.enable('deno')
 
 -- Attach keymaps to all LSP clients
 vim.api.nvim_create_autocmd('LspAttach', {
