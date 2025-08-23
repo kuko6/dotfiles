@@ -19,6 +19,7 @@ return {
             signature = { enabled = true },
             completion = {
                 documentation = { auto_show = true, auto_show_delay_ms = 100 },
+                ghost_text = { enabled = true },
                 accept = {
                     auto_brackets = { enabled = true },
                 },

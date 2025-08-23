@@ -1,37 +1,17 @@
--- require('mason').setup({
---     ui = {
---         icons = {
---             package_installed = "✓",
---             package_pending = "➜",
---             package_uninstalled = "✗"
---         }
---     }
--- })
-
--- require('mason-lspconfig').setup({
---     -- A list of servers to automatically install if they're not already installed
---     ensure_installed = {},
--- })
-
 local keymaps_config = require('config.keymaps')
 
 vim.diagnostic.config({
-    virtual_text = false,
-    virtual_lines = false,
-    underline = true,
-    update_in_insert = true,
-    severity_sort = true,
+  virtual_text = true,
+  virtual_lines = false,
+  underline = true,
+  update_in_insert = true,
+  severity_sort = true,
 })
-
--- Configure each language
--- How to add LSP for a specific language?
--- 1. use `:Mason` to install corresponding LSP or from package manager
--- 2. add configuration below
 
 -- Common Python root markers
 local python_root_markers = {
-    'pyproject.toml', 'setup.py', 'setup.cfg', 'requirements.txt', 'Pipfile',
-    'pyrightconfig.json', 'ruff.toml', '.ruff.toml', '.git'
+  'pyproject.toml', 'setup.py', 'setup.cfg', 'requirements.txt', 'Pipfile',
+  'pyrightconfig.json', 'ruff.toml', '.ruff.toml', '.git'
 }
 
 -- Disable python provider (idk, what it does but its much faster now)
