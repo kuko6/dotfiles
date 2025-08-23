@@ -4,17 +4,17 @@ vim.g.maplocalleader = ' '
 vim.keymap.set({ 'n', 'x' }, 'cp', '"+y', { desc = 'Yank to clipboard' })
 vim.keymap.set({ 'n', 'x' }, 'cv', '"+p', { desc = 'Paste from clipboard' })
 vim.keymap.set('n', ',', ':noh<cr>', { desc = 'Hide highlights' })
-vim.keymap.set("n", "<leader>ee", vim.cmd.Ex, { desc = 'Open netrw' })
+vim.keymap.set("n", "<leader>e", vim.cmd.Ex, { desc = 'Open netrw' })
 vim.keymap.set('n', 'U', '<C-r>', { desc = 'Redo' })
 
 -- telescope keybinds
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Open file picker' })
 vim.keymap.set('n', '<leader>/', builtin.live_grep, { desc = 'Search with grep' })
-vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Open buffer picker' })
+vim.keymap.set('n', '<leader>b', builtin.buffers, { desc = 'Open buffer picker' })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Open help tags' })
 vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = 'Open diagnostics picker' })
-vim.keymap.set('n', '<leader>fg', builtin.git_status, { desc = 'Open changed / diff picker' })
+vim.keymap.set('n', '<leader>g', builtin.git_status, { desc = 'Open changed / diff picker' })
 vim.keymap.set('n', '<leader>?', builtin.keymaps, { desc = 'Show keymaps' })
 
 -- lsp keybinds
@@ -59,8 +59,8 @@ local on_attach = function(client, bufnr)
     -- local bufopts = { noremap = true, silent = true, buffer = bufnr }
     map('n', '<leader>k', vim.lsp.buf.hover, bufnr, 'LSP: Hover under cursor')
     map('n', 'gi', vim.lsp.buf.implementation, bufnr, 'LSP: Go to implementation')
-    map('n', 'gd', vim.lsp.buf.definition, bufnr, 'LSP: Go to implementation')
-    -- map('n', 'gr', vim.lsp.buf.references, bufnr, 'LSP: Go to references')
+    map('n', 'gd', vim.lsp.buf.definition, bufnr, 'LSP: Go to definition')
+    map('n', 'gr', vim.lsp.buf.references, bufnr, 'LSP: Go to references')
     map('n', '<leader>rn', vim.lsp.buf.rename, bufnr, 'LSP: Rename')
     map('n', '<leader>a', vim.lsp.buf.code_action, bufnr, 'LSP: Code action')
 

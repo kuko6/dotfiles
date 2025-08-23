@@ -48,6 +48,7 @@ vim.lsp.config.pyright = {
                 autoSearchPaths = true,
                 useLibraryCodeForTypes = true,
                 diagnosticMode = 'workspace',
+                typeCheckingMode = 'off'
             },
         },
     },
@@ -59,6 +60,19 @@ vim.lsp.config.ruff = {
     root_markers = python_root_markers,
     single_file_support = true,
     settings = {},
+}
+
+vim.lsp.config.harper = {
+  cmd = { 'harper-ls', '--stdio' },
+  filetypes = { 'typst', 'markdown' },
+  root_markers = { '.git' },
+  single_file_support = true,
+  settings = {
+    dialect = "British",
+    linters = {
+      SentenceCapitalization = false,
+    }
+  }
 }
 
 vim.lsp.config.tinymist = {
@@ -91,6 +105,7 @@ vim.lsp.enable('pyright')
 vim.lsp.enable('ruff')
 vim.lsp.enable('tinymist')
 vim.lsp.enable('sourcekit')
+vim.lsp.enable('harper')
 
 -- Attach keymaps to all LSP clients
 vim.api.nvim_create_autocmd('LspAttach', {
