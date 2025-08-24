@@ -14,7 +14,7 @@ vim.keymap.set('n', '<leader>/', builtin.live_grep, { desc = 'Search with grep' 
 vim.keymap.set('n', '<leader>b', builtin.buffers, { desc = 'Open buffer picker' })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Open help tags' })
 vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = 'Open diagnostics picker' })
-vim.keymap.set('n', '<leader>g', builtin.git_status, { desc = 'Open changed / diff picker' })
+vim.keymap.set('n', '<leader>gf', builtin.git_status, { desc = 'Open changed / diff picker' })
 vim.keymap.set('n', '<leader>?', builtin.keymaps, { desc = 'Show keymaps' })
 
 -- lsp keybinds
@@ -29,20 +29,20 @@ map('n', ']d', vim.diagnostic.goto_next, 'Go to next diagnostic')
 map('n', '<leader>dd', vim.diagnostic.setloclist, 'Show diagnostics bar')
 
 local gitsigns = require('gitsigns')
-map('n', '<leader>hp', gitsigns.preview_hunk, 'Git: Preview hunk')
-map('n', '<leader>hi', gitsigns.preview_hunk_inline, 'Git: Preview hunk inline')
+map('n', '<leader>gp', gitsigns.preview_hunk, 'Git: Preview hunk')
+map('n', '<leader>gi', gitsigns.preview_hunk_inline, 'Git: Preview hunk inline')
 
-map('n', '<leader>hd', gitsigns.diffthis, 'Git: diff')
+map('n', '<leader>gd', gitsigns.diffthis, 'Git: diff')
 -- map('n', '<leader>hD', function()
 --   gitsigns.diffthis('~')
 -- end)
 
-map('n', '<leader>hQ', function() gitsigns.setqflist('all') end, 'Git: Show changes in project')
-map('n', '<leader>hq', gitsigns.setqflist, 'Git: Show changes in file')
+map('n', '<leader>gQ', function() gitsigns.setqflist('all') end, 'Git: Show changes in project')
+map('n', '<leader>gq', gitsigns.setqflist, 'Git: Show changes in file')
 
 -- Toggles
-map('n', '<leader>tb', gitsigns.toggle_current_line_blame, 'Git: Toggle inline blame')
-map('n', '<leader>tw', gitsigns.toggle_word_diff, 'Git: Toggle word diff')
+map('n', '<leader>gb', gitsigns.toggle_current_line_blame, 'Git: Toggle inline blame')
+map('n', '<leader>gw', gitsigns.toggle_word_diff, 'Git: Toggle word diff')
 
 -- Text object
 -- map({'o', 'x'}, 'ih', gitsigns.select_hunk)

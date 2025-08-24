@@ -5,6 +5,9 @@ bufferline = "multiple"
 color-modes = true
 cursorline = true
 line-number = "absolute"
+popup-border = "none"
+trim-trailing-whitespace = true
+insert-final-newline = true
 
 # [editor.lsp]
 # display-inlay-hints = true
@@ -32,11 +35,17 @@ select = "underline"
 
 [editor.indent-guides]
 render = true
-# character = "|"
+
+# Keymaps #
 
 [keys.normal.space]
 i = ":toggle lsp.display-inlay-hints"
 '=' = ":format"
+
+[keys.normal.space.g]
+f = "changed_file_picker"
+b = ":echo %sh{$HOME/.config/helix/scripts/pretty_blame.sh %{buffer_name} %{cursor_line}}"
+p = ":sh $HOME/.config/helix/scripts/preview_hunk.sh %{buffer_name} %{cursor_line} 0"
 
 [keys.normal]
 S-right = "move_next_word_start"

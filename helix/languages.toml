@@ -1,4 +1,4 @@
-# LSP configs
+# LSP configs #
 
 [language-server.deno-lsp]
 command = "deno"
@@ -39,7 +39,7 @@ command = "tinymist"
 [language-server.tinymist.config]
 typstExtraArgs = ["main.typ"]
 
-# Language configs
+# Language configs #
 
 [[language]]
 name = "python"
