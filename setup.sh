@@ -19,3 +19,4 @@ link "$(pwd)/nvim" ~/.config/nvim
 link "$(pwd)/btop" ~/.config/btop
 link "$(pwd)/tmux" ~/.config/tmux
 link "$(pwd)/ghostty" ~/.config/ghostty
+link "$(pwd)/zed" ~/.config/zed

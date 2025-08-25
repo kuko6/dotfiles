@@ -1,0 +1,132 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run the `open default settings` command
+// from the command palette or from `Zed` application menu.
+{
+  "icon_theme": "Zed (Default)",
+  "edit_predictions": {
+    "disabled_globs": [],
+    "mode": "subtle",
+    "copilot": {
+      "proxy": null,
+      "proxy_no_verify": null
+    },
+    "enabled_in_text_threads": false
+  },
+  "features": {
+    "edit_prediction_provider": "copilot"
+  },
+  "show_edit_predictions": true,
+  "agent": {
+    "inline_assistant_model": {
+      "provider": "copilot_chat",
+      "model": "claude-sonnet-4"
+    },
+    "default_profile": "ask",
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "claude-sonnet-4"
+    },
+  },
+  "base_keymap": "VSCode",
+  "theme": "Rosé Pine Moon",
+  "experimental.theme_overrides": {
+    "syntax": {
+      "function": {
+        "font_style": "normal"
+      }
+    }
+  },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
+  "ui_font_size": 14,
+  "buffer_font_size": 13,
+  "buffer_font_family": "CommitMono",
+  "buffer_line_height": "comfortable",
+  "title_bar": {
+    "show_branch_icon": true
+  },
+  "chat_panel": {
+    "button": "never"
+  },
+  "collaboration_panel": {
+    "button": true
+  },
+  "tabs": {
+    "close_position": "right",
+    "file_icons": true,
+    "git_status": true
+  },
+  "project_panel": {
+    "scrollbar": {
+      "show": "auto"
+    }
+  },
+  "git": {
+    "inline_blame": {
+      "enabled": false,
+      "delay_ms": 250,
+      "show_commit_summary": true
+    }
+  },
+  "soft_wrap": "editor_width",
+  "format_on_save": "off",
+  "languages": {
+    "Python": {
+      "format_on_save": "off",
+      "formatter": [
+        {
+          "code_actions": {
+            "source.organizeImports.ruff": true,
+            "source.fixAll.ruff": false
+          }
+        },
+        {
+          "language_server": {
+            "name": "ruff"
+          }
+        }
+      ],
+      "language_servers": ["pyright", "ruff"]
+      // "language_servers": ["pyrefly", "ruff"]
+    },
+    "TypeScript": {
+      "language_servers": [
+        "deno"
+        // "!typescript-language-server",
+        // "!vtsls",
+        // "!eslint"
+      ],
+      "formatter": "language_server"
+    }
+  },
+  "lsp": {
+    "pyright": {
+      "settings": {
+        "python.analysis": {
+          "diagnosticMode": "openFilesOnly",
+          "typeCheckingMode": "off"
+        }
+      }
+    },
+    "pyrefly": {
+      "binary": {
+        "path": "/Users/jakub/miniconda3/envs/tma-preprocessing/bin/pyrefly",
+        "arguments": ["lsp"]
+      },
+      "settings": {
+        "pyrefly": {
+          "project_includes": ["src/**/*.py", "tests/**/*.py"],
+          "project_excludes": ["**/.[!/.]*", "**/*venv/**"]
+          // "ignore_errors_in_generated_code": true
+        }
+      }
+    }
+  }
+}
