@@ -7,6 +7,7 @@ cursorline = true
 line-number = "absolute"
 popup-border = "none"
 trim-trailing-whitespace = true
+trim-final-newlines = true
 insert-final-newline = true
 
 # [editor.lsp]
