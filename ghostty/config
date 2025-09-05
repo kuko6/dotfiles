@@ -2,18 +2,18 @@ font-family = ""
 
 # font-family = "Zed Plex Mono"
 # font-family = "Menlo"
-# font-family = "CommitMonokuko"
-# adjust-cell-height = 6
+font-family = "CommitMonokuko"
+adjust-cell-height = 6
 
-# font-style = Regular
+font-style = Regular
 
-font-family = "Liga SFMono Nerd Font"
-adjust-cell-height = 2
+# font-family = "Liga SFMono Nerd Font"
+# adjust-cell-height = 2
 
 # font-family = "JetBrains Mono"
 # adjust-cell-height = 1
 
-font-style = Semibold
+# font-style = Semibold
 
 
 font-synthetic-style = bold-italic
@@ -33,8 +33,11 @@ cursor-style-blink = true
 cursor-color = f3b87c
 
 window-height = 32
-window-width = 128
+window-width = 134
 window-theme = dark
+
+window-vsync = true
+
 # macos-titlebar-style = transparent
 macos-titlebar-proxy-icon = visible
 
