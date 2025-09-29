@@ -24,15 +24,17 @@
   "agent": {
     "inline_assistant_model": {
       "provider": "copilot_chat",
-      "model": "claude-sonnet-4"
+      "model": "gpt-4.1"
     },
     "default_profile": "ask",
     "default_model": {
       "provider": "copilot_chat",
       "model": "claude-sonnet-4"
-    },
+    }
   },
   "base_keymap": "VSCode",
+  "vim_mode": true,
+  "relative_line_numbers": true,
   "theme": "Rosé Pine Moon",
   "experimental.theme_overrides": {
     "syntax": {
@@ -46,7 +48,7 @@
     "metrics": false
   },
   "ui_font_size": 14,
-  "buffer_font_size": 13,
+  "buffer_font_size": 12,
   "buffer_font_family": "CommitMono",
   "buffer_line_height": "comfortable",
   "title_bar": {
@@ -76,7 +78,6 @@
     }
   },
   "soft_wrap": "editor_width",
-  "format_on_save": "off",
   "languages": {
     "Python": {
       "format_on_save": "off",
