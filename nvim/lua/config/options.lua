@@ -9,7 +9,7 @@ vim.opt.scrolloff = 20     -- Minimal number of lines to keep above and below cu
 vim.opt.smartindent = true
 
 vim.opt.number = true     -- Show line numbers
-vim.opt.relativenumber = false
+vim.opt.relativenumber = true
 vim.opt.hlsearch = true   -- Highlight all search matches
 vim.opt.ignorecase = true -- Case-sensitive search (see smartcase)
 vim.opt.smartcase = true  -- Override ignorecase if search includes uppercase letters
@@ -24,9 +24,8 @@ vim.opt.shiftwidth = 2   -- Number of spaces for each indentation level
 vim.opt.expandtab = true -- Convert tabs to spaces
 
 -- Completion
-vim.opt.completeopt = { 
+vim.opt.completeopt = {
     'menu',             -- Show completion menu
     'menuone',          -- Show menu even for a single match
     'noselect'          -- Don't auto-select any completion item
 }
-
