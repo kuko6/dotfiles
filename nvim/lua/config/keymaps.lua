@@ -10,7 +10,7 @@ vim.keymap.set('n', 'U', '<C-r>', { desc = 'Redo' })
 -- telescope keybinds
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Open file picker' })
-vim.keymap.set('n', '<leader>/', builtin.live_grep, { desc = 'Search with grep' })
+vim.keymap.set('n', 'g/', builtin.live_grep, { desc = 'Search with grep' })
 vim.keymap.set('n', '<leader>b', builtin.buffers, { desc = 'Open buffer picker' })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Open help tags' })
 vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = 'Open diagnostics picker' })
@@ -23,16 +23,34 @@ local map = function(mode, keys, func, desc)
     vim.keymap.set(mode, keys, func, { noremap = true, silent = true, desc = desc })
 end
 
-map('n', '<leader>d', vim.diagnostic.open_float, 'Hover diagnostics')
+map('n', 'gh', vim.diagnostic.open_float, 'Hover diagnostics')
 map('n', '[d', vim.diagnostic.goto_prev, 'Go to prev diagnostic')
 map('n', ']d', vim.diagnostic.goto_next, 'Go to next diagnostic')
 map('n', '<leader>dd', vim.diagnostic.setloclist, 'Show diagnostics bar')
 
 local gitsigns = require('gitsigns')
-map('n', '<leader>gp', gitsigns.preview_hunk, 'Git: Preview hunk')
-map('n', '<leader>gi', gitsigns.preview_hunk_inline, 'Git: Preview hunk inline')
+map('n', 'do', gitsigns.preview_hunk, 'Git: Preview hunk')
+map('n', 'du', gitsigns.stage_hunk, 'Git: Stage hunk')
+map('n', 'dp', gitsigns.reset_hunk, 'Git: Reset hunk')
 
-map('n', '<leader>gd', gitsigns.diffthis, 'Git: diff')
+map('n', ']c', function()
+  if vim.wo.diff then
+    vim.cmd.normal({']c', bang = true})
+  else
+    gitsigns.nav_hunk('next')
+  end
+end)
+
+map('n', '[c', function()
+  if vim.wo.diff then
+    vim.cmd.normal({'[c', bang = true})
+  else
+    gitsigns.nav_hunk('prev')
+  end
+end)
+
+-- map('n', '<leader>gi', gitsigns.preview_hunk_inline, 'Git: Preview hunk inline')
+-- map('n', '<leader>gd', gitsigns.diffthis, 'Git: diff')
 -- map('n', '<leader>hD', function()
 --   gitsigns.diffthis('~')
 -- end)
@@ -57,7 +75,7 @@ local on_attach = function(client, bufnr)
     
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     -- local bufopts = { noremap = true, silent = true, buffer = bufnr }
-    map('n', '<leader>k', vim.lsp.buf.hover, bufnr, 'LSP: Hover under cursor')
+    map('n', 'gh', vim.lsp.buf.hover, bufnr, 'LSP: Hover under cursor')
     map('n', 'gi', vim.lsp.buf.implementation, bufnr, 'LSP: Go to implementation')
     map('n', 'gd', vim.lsp.buf.definition, bufnr, 'LSP: Go to definition')
     map('n', 'gr', vim.lsp.buf.references, bufnr, 'LSP: Go to references')
