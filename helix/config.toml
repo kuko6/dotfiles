@@ -3,6 +3,7 @@ theme = "rose_pine_moon"
 [editor]
 bufferline = "multiple"
 color-modes = true
+true-color = true
 cursorline = true
 line-number = "relative"
 popup-border = "none"
