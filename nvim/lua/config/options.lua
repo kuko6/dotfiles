@@ -1,5 +1,5 @@
 -- General Settings
-vim.opt.timeoutlen = 300   -- Time (in ms) to wait for a mapped sequence to complete
+vim.opt.timeoutlen = 500   -- Time (in ms) to wait for a mapped sequence to complete
 vim.opt.updatetime = 1000  -- Faster LSP hover highlights (default is 4000ms)
 vim.opt.mouse = 'a'        -- Enable mouse support in all modes
 vim.opt.wrap = false       -- Enable line wrapping

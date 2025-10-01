@@ -1,13 +1,13 @@
 return {
-    -- Auto pairs for brackets, quotes, etc.
-    {
-        'windwp/nvim-autopairs',
-        event = "InsertEnter",
-        config = true
-        -- use opts = {} for passing setup options
-        -- this is equivalent to setup({}) function
-    },
-
-    -- Commenting plugin
-    { 'echasnovski/mini.comment', version = '*' },
+    -- -- Auto pairs for brackets, quotes, etc.
+    -- {
+    --     'windwp/nvim-autopairs',
+    --     event = "InsertEnter",
+    --     config = true
+    --     -- use opts = {} for passing setup options
+    --     -- this is equivalent to setup({}) function
+    -- },
+    --
+    -- -- Commenting plugin
+    -- { 'echasnovski/mini.comment', version = '*' },
 }

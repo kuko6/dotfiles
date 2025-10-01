@@ -1,6 +1,6 @@
 require("rose-pine").setup({
     variant = "moon",    -- auto, main, moon, or dawn
-    dark_variant = "main", -- main, moon, or dawn
+    dark_variant = "moon", -- main, moon, or dawn
     dim_inactive_windows = false,
     extend_background_behind_borders = true,
 
@@ -61,7 +61,7 @@ require("rose-pine").setup({
         -- Comment = { fg = "foam" },
         -- StatusLine = { fg = "love", bg = "love", blend = 15 },
         -- VertSplit = { fg = "muted", bg = "muted" },
-        Visual = { fg = "base", bg = "text", inherit = false },
+        -- Visual = { fg = "base", bg = "text", inherit = false },
     },
 
     before_highlight = function(group, highlight, palette)
