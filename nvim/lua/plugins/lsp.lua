@@ -12,14 +12,18 @@ return {
         ---@module 'blink.cmp'
         ---@type blink.cmp.Config
         opts = {
-            keymap = { preset = 'enter' },
+          keymap = {
+              preset = 'enter',
+              ["<Tab>"] = { "accept" },
+              ["<S-Tab>"] = { "select_prev" },
+            },
             appearance = {
                 nerd_font_variant = 'mono'
             },
             signature = { enabled = true },
             completion = {
                 documentation = { auto_show = true, auto_show_delay_ms = 100 },
-                ghost_text = { enabled = true },
+                ghost_text = { enabled = false },
                 accept = {
                     auto_brackets = { enabled = true },
                 },
