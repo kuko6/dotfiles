@@ -29,7 +29,8 @@ map('n', ']d', vim.diagnostic.goto_next, 'Go to next diagnostic')
 map('n', '<leader>dd', vim.diagnostic.setloclist, 'Show diagnostics bar')
 
 local gitsigns = require('gitsigns')
-map('n', 'do', gitsigns.preview_hunk, 'Git: Preview hunk')
+-- map('n', 'do', gitsigns.preview_hunk, 'Git: Preview hunk')
+map('n', 'do', gitsigns.preview_hunk_inline, 'Git: Preview hunk inline')
 map('n', 'du', gitsigns.stage_hunk, 'Git: Stage hunk')
 map('n', 'dp', gitsigns.reset_hunk, 'Git: Reset hunk')
 
@@ -49,12 +50,6 @@ map('n', '[c', function()
   end
 end)
 
--- map('n', '<leader>gi', gitsigns.preview_hunk_inline, 'Git: Preview hunk inline')
--- map('n', '<leader>gd', gitsigns.diffthis, 'Git: diff')
--- map('n', '<leader>hD', function()
---   gitsigns.diffthis('~')
--- end)
-
 map('n', '<leader>gQ', function() gitsigns.setqflist('all') end, 'Git: Show changes in project')
 map('n', '<leader>gq', gitsigns.setqflist, 'Git: Show changes in file')
 
@@ -72,7 +67,7 @@ end
 local on_attach = function(client, bufnr)
     -- Enable completion triggered by <c-x><c-o>
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-    
+
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     -- local bufopts = { noremap = true, silent = true, buffer = bufnr }
     map('n', 'gh', vim.lsp.buf.hover, bufnr, 'LSP: Hover under cursor')

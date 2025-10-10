@@ -51,5 +51,17 @@
         }
       ]
     }
+  },
+  {
+    "context": "vim_mode == visual",
+    "bindings": {
+      "space =": "editor::FormatSelections"
+    }
+  },
+  {
+    "context": "vim_mode == normal && vim_mode != visual",
+    "bindings": {
+      "space =": "editor::Format"
+    }
   }
 ]

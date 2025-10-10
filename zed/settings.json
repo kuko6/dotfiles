@@ -18,7 +18,7 @@
     "enabled_in_text_threads": false
   },
   "features": {
-    "edit_prediction_provider": "copilot"
+    "edit_prediction_provider": "zed"
   },
   "show_edit_predictions": true,
   "agent": {
@@ -48,7 +48,7 @@
     "metrics": false
   },
   "ui_font_size": 14,
-  "buffer_font_size": 11,
+  "buffer_font_size": 12,
   "buffer_font_family": "CommitMono",
   "buffer_line_height": "comfortable",
   "title_bar": {
