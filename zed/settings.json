@@ -7,6 +7,18 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "ssh_connections": [
+    {
+      "host": "192.168.1.164",
+      "username": "jakub",
+      "projects": [
+        {
+          "paths": ["/Users/jakub/Developer/Orion/TMA-Analysis/./"]
+        }
+      ],
+      "nickname": "work-mac"
+    }
+  ],
   "icon_theme": "Zed (Default)",
   "edit_predictions": {
     "disabled_globs": [],
@@ -24,7 +36,7 @@
   "agent": {
     "inline_assistant_model": {
       "provider": "copilot_chat",
-      "model": "claude-sonnet-4.5"
+      "model": "gpt-4.1"
     },
     "default_profile": "ask",
     "default_model": {

@@ -12,10 +12,10 @@ return {
         ---@module 'blink.cmp'
         ---@type blink.cmp.Config
         opts = {
-          keymap = {
-              preset = 'enter',
-              ["<Tab>"] = { "accept" },
-              ["<S-Tab>"] = { "select_prev" },
+            keymap = {
+                preset = 'enter',
+                -- ["<Tab>"] = { "accept" },
+                -- ["<S-Tab>"] = { "select_prev" },
             },
             appearance = {
                 nerd_font_variant = 'mono'

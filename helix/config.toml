@@ -43,9 +43,10 @@ render = true
 i = ":toggle lsp.display-inlay-hints"
 '=' = ":format"
 
-[keys.normal.space.g]
-f = "changed_file_picker"
-b = ":echo %sh{$HOME/.config/helix/scripts/pretty_blame.sh %{buffer_name} %{cursor_line}}"
+[keys.normal.space.t]
+b= ":echo %sh{$HOME/.config/helix/scripts/pretty_blame.sh %{buffer_name} %{cursor_line}}"
+
+[keys.normal.space.h]
 p = ":sh $HOME/.config/helix/scripts/preview_hunk.sh %{buffer_name} %{cursor_line} 0"
 
 [keys.normal]
