@@ -1,0 +1,81 @@
+@define-color background #1a1b26;
+@define-color foreground #a9b1d6;
+@define-color focused #bb9af7;
+@define-color occupied #c0caf5;
+@define-color empty #565f89;
+@define-color urgent #f7768e;
+@define-color bluetooth #2ac3de;
+
+* {
+    font-family: monospace;
+    font-size: 10pt;
+    min-height: 0px;
+    background-color: transparent;
+}
+
+window#waybar {
+    color: @foreground;
+    /* background: @background; */
+    background: rgba(0, 0, 0, 0.7);
+}
+
+#tags {
+    padding-left: 6px;
+}
+
+#tags button {
+    padding: 0px;
+    min-width: 16pt;
+    color: @empty;
+    border-radius: 0px;
+}
+
+#tags button:hover {
+    box-shadow: none;
+    text-shadow: none;
+    background: transparent;
+}
+
+#tags button.occupied {
+    color: @occupied;
+    font-weight: bold;
+}
+
+#tags button.focused {
+    color: @focused;
+}
+
+#tags button.urgent {
+    color: @urgent;
+}
+
+#bluetooth.on {
+    color: @bluetooth;
+}
+
+#bluetooth.off {
+    color: @urgent;
+}
+
+#custom-record {
+    color: @urgent;
+}
+
+#battery.warning,
+#battery.critical {
+    color: @foreground;
+}
+
+#clock,
+#battery,
+#bluetooth {
+    padding: 2px 10px;
+}
+
+#custom-power {
+    padding-right: 10px;
+}
+
+/* #modules-right { */
+/* padding: 2px 10px; */
+/* } */

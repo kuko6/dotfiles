@@ -1,0 +1,30 @@
+{
+  "modules-left": ["river/tags"],
+  "modules-center": ["river/window"],
+  "modules-right": ["pulseaudio", "clock", "custom/power"],
+  "clock": {
+    "format": "{:%a %d %b %H:%M}",
+    "tooltip": false,
+  },
+  "river/tags": {
+    "num-tags": 4,
+  },
+  "custom/power": {
+    "format": "{icon}",
+    "format-icons": ["⏻"],
+    "tooltip": false,
+    "on-click": "~/.local/bin/powermenu.sh",
+    "interval": 0,
+  },
+  "pulseaudio": {
+    "format": "{volume}% {icon}",
+    "format-bluetooth": "{volume}% {icon}",
+    "format-muted": "",
+    "format-icons": {
+      "default": ["", ""],
+    },
+    "scroll-step": 1,
+    "on-click": "pavucontrol",
+    "ignored-sinks": ["Easy Effects Sink"],
+  },
+}

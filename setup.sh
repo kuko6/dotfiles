@@ -14,9 +14,9 @@ link() {
 }
 
 # create symlinks
-link "$(pwd)/helix" ~/.config/helix
-link "$(pwd)/nvim" ~/.config/nvim
-link "$(pwd)/btop" ~/.config/btop
-link "$(pwd)/tmux" ~/.config/tmux
-link "$(pwd)/ghostty" ~/.config/ghostty
-link "$(pwd)/zed" ~/.config/zed
+link "$(pwd)/config/helix" ~/.config/helix
+link "$(pwd)/config/nvim" ~/.config/nvim
+link "$(pwd)/config/btop" ~/.config/btop
+link "$(pwd)/config/tmux" ~/.config/tmux
+link "$(pwd)/config/ghostty" ~/.config/ghostty
+link "$(pwd)/config/zed" ~/.config/zed

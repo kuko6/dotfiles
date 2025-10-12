@@ -1,0 +1,10 @@
+#!/bin/sh
+
+export XDG_SESSION_TYPE=wayland
+export XDG_CURRENT_DESKTOP=river
+export GDK_BACKEND=wayland
+export GTK_USE_PORTAL=1
+export MOZ_ENABLE_WAYLAND=1
+
+PATH="/home/kuko/.nix-profile/bin:$PATH"
+exec river $@
