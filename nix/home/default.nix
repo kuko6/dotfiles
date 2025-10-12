@@ -33,7 +33,7 @@
 
   home.file = {
     "${config.xdg.configHome}" = {
-      source = ../dotfiles;
+      source = ../config;
       recursive = true;
     };
     ".local/bin" = {
