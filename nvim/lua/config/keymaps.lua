@@ -7,6 +7,9 @@ vim.keymap.set('n', ',', ':noh<cr>', { desc = 'Hide highlights' })
 vim.keymap.set("n", "<leader>e", vim.cmd.Ex, { desc = 'Open netrw' })
 vim.keymap.set('n', 'U', '<C-r>', { desc = 'Redo' })
 
+vim.keymap.set({ 'n', 'x', 'i' }, '<S-Down>', '<C-d>', { desc = 'Page half down' })
+vim.keymap.set({ 'n', 'x', 'i' }, '<S-Up>', '<C-u>', { desc = 'Page half up' })
+
 vim.keymap.set({ "n" }, "<M-n>", "<cmd>resize +2<CR>")
 vim.keymap.set({ "n" }, "<M-e>", "<cmd>resize -2<CR>")
 vim.keymap.set({ "n" }, "<M-i>", "<cmd>vertical resize +5<CR>")

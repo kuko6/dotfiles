@@ -5,7 +5,7 @@ vim.opt.mouse = 'n'         -- Enable mouse support in all modes
 vim.opt.wrap = false       -- Enable line wrapping
 vim.opt.breakindent = true -- Indent wrapped lines to match line start
 vim.opt.showmode = true    -- Show current mode (like -- INSERT --
-vim.opt.scrolloff = 3      -- Minimal number of lines to keep above and below cursor
+vim.opt.scrolloff = 5      -- Minimal number of lines to keep above and below cursor
 vim.opt.smartindent = true
 
 vim.opt.number = true     -- Show line numbers
