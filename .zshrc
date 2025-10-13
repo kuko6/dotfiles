@@ -1,3 +1,5 @@
+alias notes=hx -w ~/Notes
+
 export EDITOR=hx
 
 # Terminal theme #

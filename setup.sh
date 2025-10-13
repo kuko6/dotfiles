@@ -20,3 +20,8 @@ link "$(pwd)/btop" ~/.config/btop
 link "$(pwd)/tmux" ~/.config/tmux
 link "$(pwd)/ghostty" ~/.config/ghostty
 link "$(pwd)/zed" ~/.config/zed
+
+link "$HOME/Library/Mobile Documents/com~apple~CloudDocs/Obsidian/Kuko's Vault/" ~/Notes
+
+# link scripts
+link "$(pwd)/bin/daily_note.sh" ~/.local/bin/standup
