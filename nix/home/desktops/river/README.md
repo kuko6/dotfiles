@@ -5,7 +5,7 @@
 -->
 
 ## Tumbleweed - no DE
-- can’t get this one to work with river installed with nix (it has to be with zypper)
+- can’t get this one to work with river installed with nix, it has to be with zypper
 
 ```bash
 sudo zypper refresh
