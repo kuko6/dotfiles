@@ -1,3 +1,6 @@
+alias notes="hx -w ~/Notes"
+alias dotfiles="cd ~/Developer/dotfiles"
+
 export EDITOR=hx
 
 # Terminal theme #

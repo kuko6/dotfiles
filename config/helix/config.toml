@@ -44,10 +44,16 @@ render = true
 i = ":toggle lsp.display-inlay-hints"
 '=' = ":format"
 
-[keys.normal.space.g]
-f = "changed_file_picker"
+[keys.normal.space.t]
 b = ":echo %sh{$HOME/.config/helix/scripts/pretty_blame.sh %{buffer_name} %{cursor_line}}"
+
+[keys.normal.space.h]
 p = ":sh $HOME/.config/helix/scripts/preview_hunk.sh %{buffer_name} %{cursor_line} 0"
+r = ":reset-diff-change"
+
+# does work, but helix doesnt display staged hunks differently,
+# at least I couldnt notice any difference :(
+s = ":echo %sh{$HOME/.config/helix/scripts/stage_hunk.sh %{buffer_name} %{cursor_line} 0}"
 
 [keys.normal]
 S-right = "move_next_word_start"

@@ -1,17 +1,17 @@
 local keymaps_config = require('config.keymaps')
 
 vim.diagnostic.config({
-  virtual_text = true,
-  virtual_lines = false,
-  underline = true,
-  update_in_insert = true,
-  severity_sort = true,
+    virtual_text = true,
+    virtual_lines = false,
+    underline = true,
+    update_in_insert = true,
+    severity_sort = true,
 })
 
 -- Common Python root markers
 local python_root_markers = {
-  'pyproject.toml', 'setup.py', 'setup.cfg', 'requirements.txt', 'Pipfile',
-  'pyrightconfig.json', 'ruff.toml', '.ruff.toml', '.git'
+    'pyproject.toml', 'setup.py', 'setup.cfg', 'requirements.txt', 'Pipfile',
+    'pyrightconfig.json', 'ruff.toml', '.ruff.toml', '.git'
 }
 
 -- Disable python provider (idk, what it does but its much faster now)
@@ -43,16 +43,16 @@ vim.lsp.config.ruff = {
 }
 
 vim.lsp.config.harper = {
-  cmd = { 'harper-ls', '--stdio' },
-  filetypes = { 'typst', 'markdown' },
-  root_markers = { '.git' },
-  single_file_support = true,
-  settings = {
-    dialect = "British",
-    linters = {
-      SentenceCapitalization = false,
+    cmd = { 'harper-ls', '--stdio' },
+    filetypes = { 'typst', 'markdown' },
+    root_markers = { '.git' },
+    single_file_support = true,
+    settings = {
+        dialect = "British",
+        linters = {
+            SentenceCapitalization = false,
+        }
     }
-  }
 }
 
 vim.lsp.config.tinymist = {
@@ -81,11 +81,11 @@ vim.lsp.config.sourcekit = {
 }
 
 vim.lsp.config.deno = {
-  cmd = { 'deno', 'lsp' },
-  filetypes = { 'typescript' },
-  root_markers = { 'deno.json', 'deno.jsonc', 'package.json', '.git' },
-  single_file_support = true,
-  settings = {}
+    cmd = { 'deno', 'lsp' },
+    filetypes = { 'typescript' },
+    root_markers = { 'deno.json', 'deno.jsonc', 'package.json', '.git' },
+    single_file_support = true,
+    settings = {}
 }
 
 -- Enable LSPs

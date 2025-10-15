@@ -1,5 +1,5 @@
 *.log
 .DS_Store
 
-zed/conversations
-zed/prompts
+config/zed/conversations
+config/zed/prompts
