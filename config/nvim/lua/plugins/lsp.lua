@@ -4,7 +4,7 @@ return {
     -- "mason-org/mason-lspconfig.nvim",
     -- "neovim/nvim-lspconfig",
 
-    -- Completion engine
+    -- Completions
     {
         'saghen/blink.cmp',
         dependencies = { 'rafamadriz/friendly-snippets' },
