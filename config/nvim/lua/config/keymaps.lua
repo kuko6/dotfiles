@@ -1,6 +1,3 @@
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
-
 vim.keymap.set({ 'n', 'x' }, 'cp', '"+y', { desc = 'Yank to clipboard' })
 vim.keymap.set({ 'n', 'x' }, 'cv', '"+p', { desc = 'Paste from clipboard' })
 vim.keymap.set('n', ',', ':noh<cr>', { desc = 'Hide highlights' })
@@ -10,10 +7,10 @@ vim.keymap.set('n', 'U', '<C-r>', { desc = 'Redo' })
 vim.keymap.set({ 'n', 'x', 'i' }, '<S-Down>', '<C-d>', { desc = 'Page half down' })
 vim.keymap.set({ 'n', 'x', 'i' }, '<S-Up>', '<C-u>', { desc = 'Page half up' })
 
-vim.keymap.set({ "n" }, "<M-n>", "<cmd>resize +2<CR>")
-vim.keymap.set({ "n" }, "<M-e>", "<cmd>resize -2<CR>")
-vim.keymap.set({ "n" }, "<M-i>", "<cmd>vertical resize +5<CR>")
-vim.keymap.set({ "n" }, "<M-m>", "<cmd>vertical resize -5<CR>")
+vim.keymap.set({ "n" }, "<M-n>", "<cmd>resize +2<CR>", { desc = "Increase height" })
+vim.keymap.set({ "n" }, "<M-e>", "<cmd>resize -2<CR>",  { desc = "Decrease height" })
+vim.keymap.set({ "n" }, "<M-i>", "<cmd>vertical resize +5<CR>", { desc = "Increase width" })
+vim.keymap.set({ "n" }, "<M-m>", "<cmd>vertical resize -5<CR>", { desc = "Decrease width" })
 
 -- telescope keybinds
 local builtin = require('telescope.builtin')

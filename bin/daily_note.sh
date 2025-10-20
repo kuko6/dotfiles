@@ -47,7 +47,7 @@ TODAY=$(date +"$DATE_FORMAT")
 TODAY_NOTE="$NOTES_DIR/$TODAY.$NOTE_EXTENSION"
 
 # find the most recent note (excluding todays if it exists)
-PREVIOUS_NOTE=$(ls -t "$NOTES_DIR"/*."$NOTE_EXTENSION" 2>/dev/null | grep -v "$TODAY_NOTE" | head -n 1)
+PREVIOUS_NOTE=$(ls -Ur "$NOTES_DIR"/*."$NOTE_EXTENSION" 2>/dev/null | grep -v "$TODAY_NOTE" | head -n 1)
 
 # create todays note if it doesnt exist
 if [[ ! -f "$TODAY_NOTE" ]]; then
@@ -74,5 +74,5 @@ if [[ "$USE_SPLIT" == true ]] && [[ -n "$PREVIOUS_NOTE" ]]; then
     echo "Opened with previous note: $PREVIOUS_NOTE"
 else
     hx "$TODAY_NOTE"
-    [[ "$USE_SPLIT" == false ]] && echo "Opening without split" || echo "No previous notes found, opening only today's note"
+    [[ "$USE_SPLIT" == false ]] && echo "Opening without vsplit" || echo "No previous notes found, opening only today's note"
 fi

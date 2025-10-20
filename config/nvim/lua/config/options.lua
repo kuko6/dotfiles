@@ -1,3 +1,6 @@
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+
 -- General Settings
 vim.opt.timeoutlen = 500   -- Time (in ms) to wait for a mapped sequence to complete
 vim.opt.updatetime = 1000  -- Faster LSP hover highlights (default is 4000ms)
