@@ -74,12 +74,14 @@ local on_attach = function(client, bufnr)
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
     -- See `:help vim.lsp.*` for documentation on any of the below functions
-    map('n', 'gh', vim.lsp.buf.hover, bufnr, 'LSP: Hover under cursor')
+    -- map('n', 'gh', vim.lsp.buf.hover, bufnr, 'LSP: Hover under cursor')
+    map('n', '<leader>k', vim.lsp.buf.hover, bufnr, 'LSP: Hover under cursor')
     map('n', 'gi', vim.lsp.buf.implementation, bufnr, 'LSP: Go to implementation')
     map('n', 'gd', vim.lsp.buf.definition, bufnr, 'LSP: Go to definition')
     map('n', 'gr', vim.lsp.buf.references, bufnr, 'LSP: Go to references')
     map('n', 'cd', vim.lsp.buf.rename, bufnr, 'LSP: Rename')
     map('n', 'g.', vim.lsp.buf.code_action,bufnr, 'LSP: Code action')
+    map('n', '<leader>a', vim.lsp.buf.code_action,bufnr, 'LSP: Code action')
 
     -- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
     vim.keymap.set("n", "<leader>=", function()

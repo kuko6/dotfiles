@@ -8,6 +8,8 @@ vim.diagnostic.config({
     severity_sort = true,
 })
 
+local highlight_augroup = vim.api.nvim_create_augroup('lsp-highlight', { clear = true })
+
 -- Common Python root markers
 local python_root_markers = {
     'pyproject.toml', 'setup.py', 'setup.cfg', 'requirements.txt', 'Pipfile',
@@ -45,20 +47,22 @@ vim.lsp.config.ruff = {
 vim.lsp.config.harper = {
     cmd = { 'harper-ls', '--stdio' },
     filetypes = { 'typst', 'markdown' },
-    root_markers = { '.git' },
+    root_markers = { 'harper.toml', 'harper.yaml', 'harper.yml', 'harper.json', '.git' },
     single_file_support = true,
     settings = {
-        dialect = "British",
-        linters = {
-            SentenceCapitalization = false,
-        }
-    }
+        ['harper-ls'] = {
+            dialect = 'British',
+            linters = {
+                SentenceCapitalization = false,
+            },
+        },
+    },
 }
 
 vim.lsp.config.tinymist = {
     cmd = { 'tinymist' },
     filetypes = { 'typst' },
-    root_markers = { '.git' },
+    root_markers = { 'typst.toml', 'typst.yml', 'typst.yaml', 'main.typ', 'lib.typ', '.git' },
     single_file_support = true,
     settings = {
         formatterMode = "typstyle",
@@ -82,8 +86,8 @@ vim.lsp.config.sourcekit = {
 
 vim.lsp.config.deno = {
     cmd = { 'deno', 'lsp' },
-    filetypes = { 'typescript' },
-    root_markers = { 'deno.json', 'deno.jsonc', 'package.json', '.git' },
+    filetypes = { 'typescript', 'typescriptreact', 'javascript', 'javascriptreact' },
+    root_markers = { 'package.json', 'deno.json', 'deno.jsonc', 'deno.lock' },
     single_file_support = true,
     settings = {}
 }
@@ -118,7 +122,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
         local client = vim.lsp.get_client_by_id(event.data.client_id)
         if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf) then
-            local highlight_augroup = vim.api.nvim_create_augroup('lsp-highlight', { clear = false })
+            vim.api.nvim_clear_autocmds({
+                group = highlight_augroup,
+                buffer = event.buf,
+            })
 
             -- When cursor stops moving: Highlights all instances of the symbol under the cursor
             -- When cursor moves: Clears the highlighting
