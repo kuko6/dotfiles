@@ -11,9 +11,17 @@
     {
       "host": "192.168.1.164",
       "username": "jakub",
+      "args": [],
       "projects": [
         {
-          "paths": ["/Users/jakub/Developer/Orion/TMA-Analysis/./"]
+          "paths": [
+            "/Users/jakub/Developer"
+          ]
+        },
+        {
+          "paths": [
+            "/Users/jakub/Developer/Orion/TMA-Analysis/./"
+          ]
         }
       ],
       "nickname": "work-mac"
@@ -34,15 +42,12 @@
   },
   "show_edit_predictions": true,
   "agent": {
-    "inline_assistant_model": {
-      "provider": "copilot_chat",
-      "model": "gpt-4.1"
-    },
-    "default_profile": "ask",
     "default_model": {
       "provider": "copilot_chat",
       "model": "claude-sonnet-4.5"
-    }
+    },
+    "default_profile": "ask",
+    "model_parameters": []
   },
   "base_keymap": "VSCode",
   "vim_mode": true,
@@ -94,12 +99,7 @@
     "Python": {
       "format_on_save": "off",
       "formatter": [
-        {
-          "code_actions": {
-            "source.organizeImports.ruff": true,
-            "source.fixAll.ruff": false
-          }
-        },
+        { "code_action": "source.organizeImports.ruff" },
         {
           "language_server": {
             "name": "ruff"
