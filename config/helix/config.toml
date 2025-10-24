@@ -9,10 +9,7 @@ line-number = "relative"
 popup-border = "none"
 trim-trailing-whitespace = true
 trim-final-newlines = true
-insert-final-newline = true
-
-# [editor.lsp]
-# display-inlay-hints = true
+# insert-final-newline = true
 
 [editor.soft-wrap]
 enable = false
@@ -51,7 +48,7 @@ b = ":echo %sh{$HOME/.config/helix/scripts/pretty_blame.sh %{buffer_name} %{curs
 p = ":sh $HOME/.config/helix/scripts/preview_hunk.sh %{buffer_name} %{cursor_line} 0"
 r = ":reset-diff-change"
 
-# does work, but helix doesnt display staged hunks differently,
+# does work but helix doesnt display staged hunks differently,
 # at least I couldnt notice any difference :(
 s = ":echo %sh{$HOME/.config/helix/scripts/stage_hunk.sh %{buffer_name} %{cursor_line} 0}"
 

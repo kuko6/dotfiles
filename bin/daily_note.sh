@@ -71,8 +71,10 @@ fi
 # open helix with split view
 if [[ "$USE_SPLIT" == true ]] && [[ -n "$PREVIOUS_NOTE" ]]; then
     hx "$TODAY_NOTE" "$PREVIOUS_NOTE" --vsplit
+    # nvim -O "$TODAY_NOTE" "$PREVIOUS_NOTE"
     echo "Opened with previous note: $PREVIOUS_NOTE"
 else
     hx "$TODAY_NOTE"
+    # nvim "$TODAY_NOTE"
     [[ "$USE_SPLIT" == false ]] && echo "Opening without vsplit" || echo "No previous notes found, opening only today's note"
 fi

@@ -23,5 +23,4 @@ link "$(pwd)/config/zed" ~/.config/zed
 
 link "$HOME/Library/Mobile Documents/com~apple~CloudDocs/Obsidian/Kuko's Vault/" ~/Notes
 
-# link scripts
 link "$(pwd)/bin/daily_note.sh" ~/.local/bin/standup

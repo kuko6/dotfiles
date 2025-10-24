@@ -7,11 +7,6 @@ vim.keymap.set('n', 'U', '<C-r>', { desc = 'Redo' })
 vim.keymap.set({ 'n', 'x', 'i' }, '<S-Down>', '<C-d>', { desc = 'Page half down' })
 vim.keymap.set({ 'n', 'x', 'i' }, '<S-Up>', '<C-u>', { desc = 'Page half up' })
 
-vim.keymap.set({ "n" }, "<M-n>", "<cmd>resize +2<CR>", { desc = "Increase height" })
-vim.keymap.set({ "n" }, "<M-e>", "<cmd>resize -2<CR>",  { desc = "Decrease height" })
-vim.keymap.set({ "n" }, "<M-i>", "<cmd>vertical resize +5<CR>", { desc = "Increase width" })
-vim.keymap.set({ "n" }, "<M-m>", "<cmd>vertical resize -5<CR>", { desc = "Decrease width" })
-
 -- telescope keybinds
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>f', builtin.find_files, { desc = 'Open file picker' })
@@ -33,8 +28,33 @@ map('n', '[d', vim.diagnostic.goto_prev, 'Go to prev diagnostic')
 map('n', ']d', vim.diagnostic.goto_next, 'Go to next diagnostic')
 map('n', '<leader>dd', vim.diagnostic.setloclist, 'Show diagnostics bar')
 
+local on_attach = function(client, bufnr)
+    -- Enable completion triggered by <c-x><c-o>
+    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+    local map_buf = function(mode, keys, func, bufr, desc)
+        vim.keymap.set(mode, keys, func, { noremap = true, silent = true, buffer = bufr, desc = desc })
+    end
+
+    -- See `:help vim.lsp.*` for documentation on any of the below functions
+    -- map('n', 'gh', vim.lsp.buf.hover, bufnr, 'LSP: Hover under cursor')
+    map_buf('n', '<leader>k', vim.lsp.buf.hover, bufnr, 'LSP: Hover under cursor')
+    map_buf('n', 'gi', vim.lsp.buf.implementation, bufnr, 'LSP: Go to implementation')
+    map_buf('n', 'gd', vim.lsp.buf.definition, bufnr, 'LSP: Go to definition')
+    map_buf('n', 'gr', vim.lsp.buf.references, bufnr, 'LSP: Go to references')
+    map_buf('n', 'cd', vim.lsp.buf.rename, bufnr, 'LSP: Rename')
+    map_buf('n', 'g.', vim.lsp.buf.code_action, bufnr, 'LSP: Code action')
+    map_buf('n', '<leader>a', vim.lsp.buf.code_action, bufnr, 'LSP: Code action')
+
+    -- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+    vim.keymap.set("n", "<leader>=", function()
+        vim.lsp.buf.format({ async = true })
+    end, { noremap = true, silent = true, buffer = bufnr, desc = 'LSP: Format' })
+end
+
+-- git keybinds
 local gitsigns = require('gitsigns')
--- map('n', 'do', gitsigns.preview_hunk, 'Git: Preview hunk')
+map('n', 'do', gitsigns.preview_hunk, 'Git: Preview hunk')
 map('n', '<leader>hp', gitsigns.preview_hunk_inline, 'Git: Preview hunk inline')
 map('n', '<leader>hs', gitsigns.stage_hunk, 'Git: Stage hunk')
 map('n', '<leader>hr', gitsigns.reset_hunk, 'Git: Reset hunk')
@@ -42,7 +62,7 @@ map('n', '<leader>hr', gitsigns.reset_hunk, 'Git: Reset hunk')
 map('n', ']c', function()
     if vim.wo.diff then
         vim.cmd.normal({ ']c', bang = true })
-   else
+    else
         gitsigns.nav_hunk('next')
     end
 end, 'Git: Navigate to next change')
@@ -57,37 +77,8 @@ end, 'Git: Navigate to prev change')
 
 map('n', '<leader>hQ', function() gitsigns.setqflist('all') end, 'Git: Show changes in project')
 map('n', '<leader>hq', gitsigns.setqflist, 'Git: Show changes in file')
-
--- Toggles
 map('n', '<leader>tb', gitsigns.toggle_current_line_blame, 'Git: Toggle inline blame')
 map('n', '<leader>gw', gitsigns.toggle_word_diff, 'Git: Toggle word diff')
-
--- Text object
--- map({'o', 'x'}, 'ih', gitsigns.select_hunk)
-
-map = function(mode, keys, func, bufr, desc)
-    vim.keymap.set(mode, keys, func, { noremap = true, silent = true, buffer = bufr, desc = desc })
-end
-
-local on_attach = function(client, bufnr)
-    -- Enable completion triggered by <c-x><c-o>
-    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-    -- See `:help vim.lsp.*` for documentation on any of the below functions
-    -- map('n', 'gh', vim.lsp.buf.hover, bufnr, 'LSP: Hover under cursor')
-    map('n', '<leader>k', vim.lsp.buf.hover, bufnr, 'LSP: Hover under cursor')
-    map('n', 'gi', vim.lsp.buf.implementation, bufnr, 'LSP: Go to implementation')
-    map('n', 'gd', vim.lsp.buf.definition, bufnr, 'LSP: Go to definition')
-    map('n', 'gr', vim.lsp.buf.references, bufnr, 'LSP: Go to references')
-    map('n', 'cd', vim.lsp.buf.rename, bufnr, 'LSP: Rename')
-    map('n', 'g.', vim.lsp.buf.code_action,bufnr, 'LSP: Code action')
-    map('n', '<leader>a', vim.lsp.buf.code_action,bufnr, 'LSP: Code action')
-
-    -- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-    vim.keymap.set("n", "<leader>=", function()
-        vim.lsp.buf.format({ async = true })
-    end, { noremap = true, silent = true, buffer = bufnr, desc = 'LSP: Format' })
-end
 
 return {
     on_attach = on_attach,
