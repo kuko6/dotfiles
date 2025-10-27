@@ -1,7 +1,7 @@
 local keymaps_config = require('config.keymaps')
 
 vim.diagnostic.config({
-    virtual_text = true,
+    virtual_text = false,
     virtual_lines = false,
     underline = true,
     update_in_insert = true,
