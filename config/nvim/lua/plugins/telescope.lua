@@ -13,7 +13,7 @@ return {
                         prompt_position = 'top',
                         mirror = false,
                     },
-                    sorting_strategy = 'ascending', -- Sort from top to bottom
+                    sorting_strategy = 'ascending',
                 }
             }
             pcall(require('telescope').load_extension, 'fzf')
