@@ -13,7 +13,7 @@ vim.keymap.set('n', '<leader>f', builtin.find_files, { desc = 'Open file picker'
 vim.keymap.set('n', 'g/', builtin.live_grep, { desc = 'Search with grep' })
 vim.keymap.set('n', '<leader>b', builtin.buffers, { desc = 'Open buffer picker' })
 vim.keymap.set('n', '<leader>h', builtin.help_tags, { desc = 'Open help tags' })
-vim.keymap.set('n', '<leader>d', builtin.diagnostics, { desc = 'Open diagnostics picker' })
+vim.keymap.set('n', '<leader>d', builtin.diagnostics, { desc = 'Open workspace diagnostics picker' })
 vim.keymap.set('n', '<leader>g', builtin.git_status, { desc = 'Open changed / diff picker' })
 vim.keymap.set('n', '<leader>?', builtin.keymaps, { desc = 'Show keymaps' })
 
