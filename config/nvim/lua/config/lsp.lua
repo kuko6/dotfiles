@@ -84,6 +84,23 @@ vim.lsp.config.sourcekit = {
     },
 }
 
+vim.lsp.config.rust_analyzer = {
+    cmd = { 'rust-analyzer' },
+    filetypes = { 'rust' },
+    root_markers = { 'Cargo.toml', 'rust-project.json', '.git' },
+    single_file_support = true,
+    settings = {
+        ['rust-analyzer'] = {
+            cargo = {
+                allFeatures = true,
+            },
+            checkOnSave = {
+                command = 'clippy',
+            },
+        },
+    },
+}
+
 vim.lsp.config.deno = {
     cmd = { 'deno', 'lsp' },
     filetypes = { 'typescript', 'typescriptreact', 'javascript', 'javascriptreact' },
@@ -97,6 +114,7 @@ vim.lsp.enable('pyright')
 vim.lsp.enable('ruff')
 vim.lsp.enable('tinymist')
 vim.lsp.enable('sourcekit')
+vim.lsp.enable('rust_analyzer')
 vim.lsp.enable('harper')
 vim.lsp.enable('deno')
 

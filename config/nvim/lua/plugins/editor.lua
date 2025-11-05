@@ -17,6 +17,16 @@ return {
             },
         },
     },
+    { "j-hui/fidget.nvim", opts = {} },
+    {
+        "norcalli/nvim-colorizer.lua",
+        config = function()
+            require("colorizer").setup({
+                "*",
+                css = { rgb_fn = true },
+            })
+        end,
+    },
     {
         'folke/which-key.nvim',
         event = 'VimEnter', -- Sets the loading event to 'VimEnter'
