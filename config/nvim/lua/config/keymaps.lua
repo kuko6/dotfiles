@@ -18,40 +18,26 @@ vim.keymap.set('n', '<leader>d', builtin.diagnostics, { desc = 'Open workspace d
 vim.keymap.set('n', '<leader>g', builtin.git_status, { desc = 'Open changed / diff picker' })
 vim.keymap.set('n', '<leader>?', builtin.keymaps, { desc = 'Show keymaps' })
 
--- lsp keybinds
-local opts = { noremap = true, silent = true }
 local map = function(mode, keys, func, desc)
     vim.keymap.set(mode, keys, func, { noremap = true, silent = true, desc = desc })
 end
 
+-- lsp keybinds
 map('n', 'gh', vim.diagnostic.open_float, 'Hover diagnostics')
 map('n', '[d', vim.diagnostic.goto_prev, 'Go to prev diagnostic')
 map('n', ']d', vim.diagnostic.goto_next, 'Go to next diagnostic')
 map('n', '<leader>dd', vim.diagnostic.setloclist, 'Show diagnostics bar')
 
-local on_attach = function(client, bufnr)
-    -- Enable completion triggered by <c-x><c-o>
-    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-    local map_buf = function(mode, keys, func, bufr, desc)
-        vim.keymap.set(mode, keys, func, { noremap = true, silent = true, buffer = bufr, desc = desc })
-    end
-
-    -- See `:help vim.lsp.*` for documentation on any of the below functions
-    -- map('n', 'gh', vim.lsp.buf.hover, bufnr, 'LSP: Hover under cursor')
-    map_buf('n', '<leader>k', vim.lsp.buf.hover, bufnr, 'LSP: Hover under cursor')
-    map_buf('n', 'gi', vim.lsp.buf.implementation, bufnr, 'LSP: Go to implementation')
-    map_buf('n', 'gd', vim.lsp.buf.definition, bufnr, 'LSP: Go to definition')
-    map_buf('n', 'gr', vim.lsp.buf.references, bufnr, 'LSP: Go to references')
-    map_buf('n', 'cd', vim.lsp.buf.rename, bufnr, 'LSP: Rename')
-    map_buf('n', 'g.', vim.lsp.buf.code_action, bufnr, 'LSP: Code action')
-    map_buf('n', '<leader>a', vim.lsp.buf.code_action, bufnr, 'LSP: Code action')
-
-    -- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-    vim.keymap.set("n", "<leader>=", function()
-        vim.lsp.buf.format({ async = true })
-    end, { noremap = true, silent = true, buffer = bufnr, desc = 'LSP: Format' })
-end
+map('n', '<leader>k', vim.lsp.buf.hover, 'LSP: Hover under cursor')
+map('n', 'gi', vim.lsp.buf.implementation, 'LSP: Go to implementation')
+map('n', 'gd', vim.lsp.buf.definition, 'LSP: Go to definition')
+map('n', 'gr', vim.lsp.buf.references, 'LSP: Go to references')
+map('n', 'cd', vim.lsp.buf.rename, 'LSP: Rename')
+map('n', 'g.', vim.lsp.buf.code_action, 'LSP: Code action')
+map('n', '<leader>a', vim.lsp.buf.code_action, 'LSP: Code action')
+map('n', '<leader>=', function()
+    vim.lsp.buf.format({ async = true })
+end, 'LSP: Format')
 
 -- git keybinds
 local gitsigns = require('gitsigns')
@@ -80,7 +66,3 @@ map('n', '<leader>hQ', function() gitsigns.setqflist('all') end, 'Git: Show chan
 map('n', '<leader>hq', gitsigns.setqflist, 'Git: Show changes in file')
 map('n', '<leader>tb', gitsigns.toggle_current_line_blame, 'Git: Toggle inline blame')
 map('n', '<leader>gw', gitsigns.toggle_word_diff, 'Git: Toggle word diff')
-
-return {
-    on_attach = on_attach,
-}

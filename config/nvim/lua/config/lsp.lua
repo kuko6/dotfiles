@@ -1,5 +1,3 @@
-local keymaps_config = require('config.keymaps')
-
 vim.diagnostic.config({
     virtual_text = true,
     virtual_lines = false,
@@ -8,15 +6,18 @@ vim.diagnostic.config({
     severity_sort = true,
 })
 
+-- let omni-completion (<C-x><C-o>) use lsp
+vim.o.omnifunc = 'v:lua.vim.lsp.omnifunc'
+
 local highlight_augroup = vim.api.nvim_create_augroup('lsp-highlight', { clear = true })
 
--- Common Python root markers
+-- common Python root markers
 local python_root_markers = {
     'pyproject.toml', 'setup.py', 'setup.cfg', 'requirements.txt', 'Pipfile',
     'pyrightconfig.json', 'ruff.toml', '.ruff.toml', '.git'
 }
 
--- Disable python provider (idk, what it does but its much faster now)
+-- disable python provider (idk, what it does but its much faster now)
 vim.g.loaded_python3_provider = 0
 
 vim.lsp.config.pyright = {
@@ -118,16 +119,6 @@ vim.lsp.enable('rust_analyzer')
 vim.lsp.enable('harper')
 vim.lsp.enable('deno')
 
--- Attach keymaps to all LSP clients
-vim.api.nvim_create_autocmd('LspAttach', {
-    callback = function(args)
-        local client = vim.lsp.get_client_by_id(args.data.client_id)
-        if client then
-            keymaps_config.on_attach(client, args.buf)
-        end
-    end,
-})
-
 vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(event)
         local function client_supports_method(client, method, bufnr)
@@ -145,8 +136,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
                 buffer = event.buf,
             })
 
-            -- When cursor stops moving: Highlights all instances of the symbol under the cursor
-            -- When cursor moves: Clears the highlighting
+            -- when cursor stops moving: highlights all instances of the symbol under the cursor
+            -- when cursor moves: clears the highlighting
             vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
                 buffer = event.buf,
                 group = highlight_augroup,
