@@ -28,8 +28,8 @@
     fuzzel
     swaybg
 
-    nautilus
-    qimgv
+    # nautilus
+    # qimgv
   ];
 
    home.sessionVariables = {
@@ -38,5 +38,9 @@
     GTK_USE_PORTAL = 1;
     GDK_BACKEND = "wayland";
     MOZ_ENABLE_WAYLAND = 1;
+  };
+
+  services = {
+    dunst = import ../../modules/dunst.nix { inherit config; };
   };
 }

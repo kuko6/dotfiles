@@ -16,21 +16,6 @@
     '';
   };
 
-  # home.activation = {
-  #   showLatestDiff = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-  #     home-manager generations \
-  #       | head -n2 \
-  #       | awk '
-  #           NR==1 { new=$7 }
-  #           NR==2 { old=$7 }
-  #           END {
-  #             printf("Changes from %s → %s\n", old, new)
-  #             system("nvd diff " old " " new)
-  #           }
-  #         '
-  #   '';
-  # };
-
   home.file = {
     "${config.xdg.configHome}" = {
       source = ../config;
@@ -78,25 +63,17 @@
   # };
 
   # Packages installed to the user profile
-  # packages doesnt need to be here if they are included in programs
   home.packages = with pkgs; [
     starship
-    fastfetch
-    yazi
     tmux
     helix
+    neovim
+    fastfetch
     btop
     tree
-    nvd
-    vim
-    cbonsai
     playerctl
 
     # Fonts
-    departure-mono
-    fira-code
-    fira-code-symbols
-    nerd-fonts.fira-code
     nerd-fonts.jetbrains-mono
     material-icons
     material-symbols
@@ -113,10 +90,6 @@
 
   programs = {
     zsh = import ./modules/zsh.nix { inherit config pkgs; };
-  };
-
-  services = {
-    dunst = import ./modules/dunst.nix { inherit config; };
   };
 
   programs.home-manager.enable = true;

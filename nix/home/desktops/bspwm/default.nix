@@ -16,4 +16,8 @@
     feh
     betterlockscreen
   ];
+
+  services = {
+    dunst = import ../../modules/dunst.nix { inherit config; };
+  };
 }

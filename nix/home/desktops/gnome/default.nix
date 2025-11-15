@@ -9,16 +9,15 @@
   targets.genericLinux.enable = true;
 
   home.packages = with pkgs; [
-    gnome-extension-manager
-    gnome-weather
-    gnome-tweaks
-    gnomeExtensions.blur-my-shell
-    gnomeExtensions.dash-to-dock
-    gnomeExtensions.places-status-indicator
-    gnomeExtensions.user-themes
-    gnomeExtensions.open-bar
-    gnomeExtensions.space-bar
-    gnomeExtensions.runcat
+    # gnome-extension-manager
+    # gnome-weather
+    # gnome-tweaks
+    # gnomeExtensions.blur-my-shell
+    # gnomeExtensions.dash-to-dock
+    # gnomeExtensions.places-status-indicator
+    # gnomeExtensions.user-themes
+    # gnomeExtensions.open-bar
+    # gnomeExtensions.space-bar
   ];
 
   dconf.settings = {
