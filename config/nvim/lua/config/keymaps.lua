@@ -7,7 +7,7 @@ vim.keymap.set('n', 'U', '<C-r>', { desc = 'Redo' })
 vim.keymap.set({ 'n', 'x', 'i' }, '<S-Down>', '<C-d>', { desc = 'Page half down' })
 vim.keymap.set({ 'n', 'x', 'i' }, '<S-Up>', '<C-u>', { desc = 'Page half up' })
 
--- telescope keybinds
+-- fzf keybinds
 local fzf = require('fzf-lua')
 vim.keymap.set('n', '<leader>f', fzf.files, { desc = 'Open file picker' })
 vim.keymap.set('n', 'g/', fzf.live_grep, { desc = 'Search with grep' })

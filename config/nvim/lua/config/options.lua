@@ -74,16 +74,32 @@ vim.api.nvim_create_autocmd({'BufEnter', 'BufWinEnter'}, {
 })
 
 -- remove trailing whitespace on save
-vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = "*",
-  callback = function()
-    -- trim trailing whitespace
-    vim.cmd([[%s/\s\+$//e]])
+vim.api.nvim_create_augroup("TrimWhitespace", { clear = true })
 
-    -- trim excessive blank lines at end of file
-    local last_nonblank = vim.fn.prevnonblank(vim.fn.line('$'))
-    if last_nonblank < vim.fn.line('$') then
-      vim.api.nvim_buf_set_lines(0, last_nonblank, -1, false, {})
+local function enable_trim()
+  vim.api.nvim_create_autocmd("BufWritePre", {
+    group = "TrimWhitespace",
+    pattern = "*",
+    callback = function()
+      vim.cmd([[%s/\s\+$//e]])
+      local last_nonblank = vim.fn.prevnonblank(vim.fn.line('$'))
+      if last_nonblank < vim.fn.line('$') then
+        vim.api.nvim_buf_set_lines(0, last_nonblank, -1, false, {})
+      end
     end
-  end,
-})
+  })
+end
+
+-- create user commands to toggle
+vim.api.nvim_create_user_command("TrimWSDisable", function()
+  vim.api.nvim_clear_autocmds({ group = "TrimWhitespace" })
+  print("Trailing whitespace trim disabled")
+end, {})
+
+vim.api.nvim_create_user_command("TrimWSEnable", function()
+  enable_trim()
+  print("Trailing whitespace trim enabled")
+end, {})
+
+-- enable by default
+enable_trim()

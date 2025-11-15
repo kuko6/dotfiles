@@ -34,7 +34,7 @@ bat cache --build
 # fi
 
 # TODO:
-# - probably differentiate if its on home computer or work, because the path is different
+# - probably differentiate if its on home computer or work because the paths are different
 # - I guess we can use hostname or set and ENV variable in .zshrc
 link "$HOME/Library/Mobile Documents/com~apple~CloudDocs/Obsidian/Kuko's Vault/" ~/Notes
 
