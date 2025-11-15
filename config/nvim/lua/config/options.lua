@@ -73,7 +73,7 @@ vim.api.nvim_create_autocmd({'BufEnter', 'BufWinEnter'}, {
   end,
 })
 
- -- remove trailing whitespace on save
+-- remove trailing whitespace on save
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = "*",
   callback = function()
