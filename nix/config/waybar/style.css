@@ -1,9 +1,9 @@
-@define-color background #1a1b26;
-@define-color foreground #a9b1d6;
-@define-color focused #bb9af7;
+@define-color background #1f2430;
+@define-color foreground #cccac2;
+@define-color focused #f28779;
 @define-color occupied #c0caf5;
-@define-color empty #565f89;
-@define-color urgent #f7768e;
+@define-color empty #686868;
+@define-color urgent #ffd173;
 @define-color bluetooth #2ac3de;
 
 * {

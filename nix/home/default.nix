@@ -21,6 +21,22 @@
       source = ../config;
       recursive = true;
     };
+    "${config.xdg.configHome}/btop" = {
+      source = ../../config/btop;
+      recursive = true;
+    };
+    "${config.xdg.configHome}/tmux" = {
+      source = ../../config/tmux;
+      recursive = true;
+    };
+    "${config.xdg.configHome}/nvim" = {
+      source = ../../config/nvim;
+      recursive = true;
+    };
+    "${config.xdg.configHome}/helix" = {
+      source = ../../config/helix;
+      recursive = true;
+    };
     ".local/bin" = {
       source = ../bin;
       recursive = true;
@@ -70,6 +86,10 @@
     neovim
     fastfetch
     btop
+    bat
+    fd
+    ripgrep
+    fzf
     tree
     playerctl
 

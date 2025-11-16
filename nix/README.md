@@ -2,13 +2,20 @@
 
 Download nix:
 ```sh
+sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install)
+```
+and add `experimental-features = nix-command flakes` to `/etc/nix/nix.conf`
+
+or you the determinate systems installer
+```sh
 curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install --determinate
 ```
 
 Clone this repo:
 ```sh
 nix-shell -p git
-
+```
+```sh
 git clone https://github.com/kuko6/nix-config
 ```
 
@@ -17,6 +24,11 @@ Download home-manager:
 nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager &&
 nix-channel --update &&
 nix-shell '<home-manager>' -A install
+```
+or build the config directly
+```sh
+nix build .#homeConfigurations.<config>.activationPackage &&
+./result/activate
 ```
 
 On NixOS move `/etc/nixos/hardware-configuration.nix` into `nixos/`.
