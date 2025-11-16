@@ -110,6 +110,14 @@ vim.lsp.config.deno = {
     settings = {}
 }
 
+vim.lsp.config.svelte = {
+    cmd = { 'svelteserver', '--stdio' },
+    filetypes = { 'svelte' },
+    root_markers = { 'svelte.config.js', 'package.json', '.git' },
+    single_file_support = true,
+    settings = {},
+}
+
 -- Enable LSPs
 vim.lsp.enable('pyright')
 vim.lsp.enable('ruff')
@@ -118,6 +126,7 @@ vim.lsp.enable('sourcekit')
 vim.lsp.enable('rust_analyzer')
 vim.lsp.enable('harper')
 vim.lsp.enable('deno')
+vim.lsp.enable('svelte')
 
 vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(event)
