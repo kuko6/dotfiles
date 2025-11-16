@@ -19,7 +19,7 @@
   };
 
   wayland.windowManager.river = {
-    enable=true;
+    enable = true;
   };
 
   home.packages = with pkgs; [

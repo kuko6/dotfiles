@@ -4,56 +4,55 @@
 @define-color occupied #c0caf5;
 @define-color empty #686868;
 @define-color urgent #ffd173;
-@define-color bluetooth #2ac3de;
 
 * {
-    font-family: monospace;
-    font-size: 10pt;
+    font-family: JetBrainsMono Nerd Font;
+    font-size: 8pt;
     min-height: 0px;
     background-color: transparent;
 }
 
 window#waybar {
     color: @foreground;
-    /* background: @background; */
-    background: rgba(0, 0, 0, 0.7);
+    background: @background;
 }
 
-#tags {
+#tags, #workspaces, #mode {
     padding-left: 6px;
 }
 
-#tags button {
+#mode {
+  color: @urgent
+}
+
+#tags button,
+#workspaces button {
     padding: 0px;
     min-width: 16pt;
     color: @empty;
     border-radius: 0px;
 }
 
-#tags button:hover {
+#tags button:hover,
+#workspaces button:hover {
     box-shadow: none;
     text-shadow: none;
     background: transparent;
 }
 
-#tags button.occupied {
+#tags button.occupied,
+#workspaces button.occupied {
     color: @occupied;
     font-weight: bold;
 }
 
-#tags button.focused {
+#tags button.focused,
+#workspaces button.focused {
     color: @focused;
 }
 
-#tags button.urgent {
-    color: @urgent;
-}
-
-#bluetooth.on {
-    color: @bluetooth;
-}
-
-#bluetooth.off {
+#tags button.urgent,
+#workspaces button.urgent {
     color: @urgent;
 }
 
@@ -61,21 +60,10 @@ window#waybar {
     color: @urgent;
 }
 
-#battery.warning,
-#battery.critical {
-    color: @foreground;
-}
-
-#clock,
-#battery,
-#bluetooth {
+#clock {
     padding: 2px 10px;
 }
 
 #custom-power {
     padding-right: 10px;
 }
-
-/* #modules-right { */
-/* padding: 2px 10px; */
-/* } */

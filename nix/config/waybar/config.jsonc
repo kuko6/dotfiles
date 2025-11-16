@@ -1,6 +1,6 @@
 {
-  "modules-left": ["river/tags"],
-  "modules-center": ["river/window"],
+  "modules-left": ["river/tags", "sway/workspaces", "sway/mode"],
+  "modules-center": ["river/window", "sway/window"],
   "modules-right": ["pulseaudio", "clock", "custom/power"],
   "clock": {
     "format": "{:%a %d %b %H:%M}",

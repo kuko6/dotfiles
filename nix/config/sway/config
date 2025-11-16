@@ -16,7 +16,8 @@ set $term foot
 # set $term gnome-terminal --hide-menubar
 
 # Your preferred application launcher
-set $menu wmenu-run
+# set $menu wmenu-run
+set $menu fuzzel
 
 ### Output configuration
 #
@@ -65,6 +66,8 @@ output * bg #2b2e3b solid_color
 #
 # Basics:
 #
+    # bindsym $mod+Shift+x exec sh -c 'echo "$PATH"' > /tmp/sway-path.txt
+
     # Start a terminal
     bindsym $mod+Shift+Return exec $term
 
@@ -88,7 +91,7 @@ output * bg #2b2e3b solid_color
     bindsym $mod+Shift+c reload
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+    # bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 #
 # Moving around:
 #
@@ -255,7 +258,7 @@ client.background       #000000
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    # swaybar_command waybar
+    swaybar_command waybar
 
     position top
     font pango:JetBrainsMono Nerd Font 10

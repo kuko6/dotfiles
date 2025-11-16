@@ -8,7 +8,7 @@ and add `experimental-features = nix-command flakes` to `/etc/nix/nix.conf`
 
 or you the determinate systems installer
 ```sh
-curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install --determinate
+curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
 ```
 
 Clone this repo:
@@ -67,6 +67,9 @@ or to also delete all generations
 ```sh
 sudo nix-collect-garbage --delete-old
 ```
+
+## Troubleshooting
+I sometimes had problems with [nix binaries not being in PATH](https://stackoverflow.com/a/78813750).
 
 ## Ref
 - [nix-starter-configs template](https://github.com/Misterio77/nix-starter-configs?tab=readme-ov-file)

@@ -19,7 +19,7 @@
   };
 
   wayland.windowManager.sway = {
-    enable=true;
+    enable = true;
   };
 
   home.packages = with pkgs; [

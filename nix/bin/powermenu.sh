@@ -2,16 +2,34 @@
 
 entries="Logout\nSleep\nReboot\nShutdown"
 
-selected=$(echo -e $entries | fuzzel --dmenu -l 4 -p ": ")
+selected=$(printf "%b" "$entries" | fuzzel --dmenu -l 4 -p ": ")
 # fuzzel --dmenu -l 7 -p "Power Menu: "
+#
+# Detect compositor
+case "$XDG_CURRENT_DESKTOP" in
+    river*)
+        logout_cmd="riverctl exit"
+        ;;
+    sway*)
+        logout_cmd="swaymsg exit"
+        ;;
+    *)
+        # fallback if unknown
+        logout_cmd="riverctl exit"
+        ;;
+esac
 
-case $selected in
+case "$selected" in
     "Logout")
-        riverctl exit;;
+        eval "$logout_cmd"
+        ;;
     "Sleep")
-        systemctl suspend;;
+        systemctl suspend
+        ;;
     "Reboot")
-        systemctl reboot;;
+        systemctl reboot
+        ;;
     "Shutdown")
-        systemctl poweroff;;
+        systemctl poweroff
+        ;;
 esac
