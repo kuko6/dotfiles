@@ -105,9 +105,36 @@ vim.lsp.config.rust_analyzer = {
 vim.lsp.config.deno = {
     cmd = { 'deno', 'lsp' },
     filetypes = { 'typescript', 'typescriptreact', 'javascript', 'javascriptreact' },
-    root_markers = { 'package.json', 'deno.json', 'deno.jsonc', 'deno.lock' },
+    root_markers = { 'deno.json', 'deno.jsonc', 'deno.lock' },
     single_file_support = true,
     settings = {}
+}
+
+vim.lsp.config.tsserver = {
+    cmd = { 'typescript-language-server', '--stdio' },
+    filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+    root_markers = { 'package.json', 'tsconfig.json', 'jsconfig.json', '.git' },
+    single_file_support = false,
+    settings = {},
+}
+
+vim.lsp.config.tailwindcss = {
+    cmd = { 'tailwindcss-language-server', '--stdio' },
+    filetypes = {
+        'html',
+        'css',
+        'postcss',
+        'sass',
+        'scss',
+        'javascript',
+        'javascriptreact',
+        'typescript',
+        'typescriptreact',
+        'svelte'
+    },
+    root_markers = { 'tailwind.config.js', 'postcss.config.js', 'package.json', '.git' },
+    single_file_support = true,
+    settings = {},
 }
 
 vim.lsp.config.svelte = {
@@ -126,6 +153,8 @@ vim.lsp.enable('sourcekit')
 vim.lsp.enable('rust_analyzer')
 vim.lsp.enable('harper')
 vim.lsp.enable('deno')
+vim.lsp.enable('tsserver')
+vim.lsp.enable('tailwindcss')
 vim.lsp.enable('svelte')
 
 vim.api.nvim_create_autocmd("LspAttach", {
