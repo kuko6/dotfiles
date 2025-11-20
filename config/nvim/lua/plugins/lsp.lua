@@ -14,8 +14,8 @@ return {
         opts = {
             keymap = {
                 preset = 'enter',
-                -- ["<Tab>"] = { "accept" },
-                -- ["<S-Tab>"] = { "select_prev" },
+                ["<S-Tab>"] = { "select_prev" },
+                ["<Tab>"] = { "select_next" },
             },
             appearance = {
                 nerd_font_variant = 'mono'
@@ -37,5 +37,24 @@ return {
             fuzzy = { implementation = "prefer_rust_with_warning" },
         },
         opts_extend = { "sources.default" }
+    },
+    {
+        "zbirenbaum/copilot.lua",
+        cmd = "Copilot",
+        event = "InsertEnter",
+        config = function()
+            require("copilot").setup({
+                suggestion = {
+                    enabled = true,
+                    auto_trigger = false,
+                    keymap = {
+                        accept = "<M-Tab>",
+                    },
+                },
+                panel = {
+                    enabled = false,
+                },
+            })
+        end,
     },
 }

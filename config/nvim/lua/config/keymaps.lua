@@ -25,6 +25,11 @@ local map = function(mode, keys, func, desc)
     vim.keymap.set(mode, keys, func, { noremap = true, silent = true, desc = desc })
 end
 
+-- copilot keybinds
+vim.keymap.set("n", "<leader>cp", function()
+  require("copilot.suggestion").toggle_auto_trigger()
+end, { desc = "Toggle Copilot suggestions" })
+
 -- lsp keybinds
 map('n', 'gh', vim.diagnostic.open_float, 'Hover diagnostics')
 map('n', '[d', vim.diagnostic.goto_prev, 'Go to prev diagnostic')
