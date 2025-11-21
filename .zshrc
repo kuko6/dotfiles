@@ -1,4 +1,5 @@
-alias notes="hx -w ~/Notes"
+# alias notes="hx -w ~/Notes"
+alias notes="cd ~/Notes && nvim"
 alias dotfiles="cd ~/Developer/dotfiles"
 alias obsidian="open ~/Applications/Obsidian.app"
 
