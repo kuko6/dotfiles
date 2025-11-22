@@ -1,10 +1,4 @@
 return {
-    -- Mason for managing LSP servers
-    -- "mason-org/mason.nvim",
-    -- "mason-org/mason-lspconfig.nvim",
-    -- "neovim/nvim-lspconfig",
-
-    -- Completions
     {
         'saghen/blink.cmp',
         dependencies = { 'rafamadriz/friendly-snippets' },
@@ -14,8 +8,8 @@ return {
         opts = {
             keymap = {
                 preset = 'enter',
-                ["<S-Tab>"] = { "select_prev" },
-                ["<Tab>"] = { "select_next" },
+                ['<Up>'] = { 'select_prev', 'fallback' },
+                ['<Down>'] = { 'select_next', 'fallback' },
             },
             appearance = {
                 nerd_font_variant = 'mono'

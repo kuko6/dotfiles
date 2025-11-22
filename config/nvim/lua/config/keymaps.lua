@@ -26,9 +26,17 @@ local map = function(mode, keys, func, desc)
 end
 
 -- copilot keybinds
+vim.g.copilot_on = false
 vim.keymap.set("n", "<leader>cp", function()
   require("copilot.suggestion").toggle_auto_trigger()
-end, { desc = "Toggle Copilot suggestions" })
+  vim.g.copilot_on = not vim.g.copilot_on
+
+  if vim.g.copilot_on then
+    vim.notify("Copilot Enabled", vim.log.levels.INFO, { title = "Copilot" })
+  else
+    vim.notify("Copilot Disabled", vim.log.levels.WARN, { title = "Copilot" })
+  end
+end, { desc = "Toggle Copilot Auto Trigger" })
 
 -- lsp keybinds
 map('n', 'gh', vim.diagnostic.open_float, 'Hover diagnostics')

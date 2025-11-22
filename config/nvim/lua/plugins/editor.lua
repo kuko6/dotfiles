@@ -1,3 +1,10 @@
+local function copilot_status()
+    if vim.g.copilot_on then
+        return " "
+    end
+    return " "
+end
+
 return {
     { "rose-pine/neovim", name = "rose-pine" },
     {
@@ -66,6 +73,7 @@ return {
                             { hl = 'MiniStatuslineDevinfo',  strings = { git } },
                             { hl = 'MiniStatuslineFilename', strings = { filename } },
                             '%=', -- separator
+                            { hl = 'MiniStatuslineDevinfo',  strings = { copilot_status() } },
                             { hl = 'MiniStatuslineDevinfo',  strings = { diagnostics } },
                             { hl = 'MiniStatuslineFileinfo', strings = { fileinfo, location } },
                         })
