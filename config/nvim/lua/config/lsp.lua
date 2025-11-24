@@ -110,10 +110,19 @@ vim.lsp.config.deno = {
     settings = {}
 }
 
+local function get_typescript_root(fname)
+    local root = vim.fs.root(fname, { 'package.json', 'tsconfig.json', 'jsconfig.json', '.git' })
+    -- if inside a deno project, don't start tsserver
+    if vim.fs.root(fname, { 'deno.json', 'deno.jsonc', 'deno.lock' }) then
+        return nil
+    end
+    return root
+end
+
 vim.lsp.config.tsserver = {
     cmd = { 'typescript-language-server', '--stdio' },
     filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
-    root_markers = { 'package.json', 'tsconfig.json', 'jsconfig.json', '.git' },
+    root_dir = get_typescript_root,
     single_file_support = false,
     settings = {},
 }
