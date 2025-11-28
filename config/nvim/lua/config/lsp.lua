@@ -113,7 +113,7 @@ vim.lsp.config.deno = {
 vim.lsp.config.tsserver = {
     cmd = { 'typescript-language-server', '--stdio' },
     filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
-    root_markers = { 'package.json', 'tsconfig.json', 'jsconfig.json', '.git' },
+    root_markers = { 'package.json', 'tsconfig.json', 'jsconfig.json' },
     single_file_support = false,
     settings = {},
 }
@@ -132,7 +132,7 @@ vim.lsp.config.tailwindcss = {
         'typescriptreact',
         'svelte'
     },
-    root_markers = { 'tailwind.config.js', 'postcss.config.js', 'package.json', '.git' },
+    root_markers = { 'tailwind.config.js', 'postcss.config.js', 'package.json' },
     single_file_support = true,
     settings = {},
 }
@@ -140,7 +140,7 @@ vim.lsp.config.tailwindcss = {
 vim.lsp.config.svelte = {
     cmd = { 'svelteserver', '--stdio' },
     filetypes = { 'svelte' },
-    root_markers = { 'svelte.config.js', 'package.json', '.git' },
+    root_markers = { 'svelte.config.js', 'package.json' },
     single_file_support = true,
     settings = {},
 }
@@ -157,35 +157,24 @@ vim.lsp.enable('tsserver')
 vim.lsp.enable('tailwindcss')
 vim.lsp.enable('svelte')
 
+-- highlight symbol under cursor
 vim.api.nvim_create_autocmd("LspAttach", {
+    group = highlight_augroup,
     callback = function(event)
-        local function client_supports_method(client, method, bufnr)
-            if vim.fn.has 'nvim-0.11' == 1 then
-                return client:supports_method(method, bufnr)
-            else
-                return client.supports_method(method, { bufnr = bufnr })
-            end
-        end
-
         local client = vim.lsp.get_client_by_id(event.data.client_id)
-        if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf) then
-            vim.api.nvim_clear_autocmds({
-                group = highlight_augroup,
-                buffer = event.buf,
-            })
-
-            -- when cursor stops moving: highlights all instances of the symbol under the cursor
-            -- when cursor moves: clears the highlighting
-            vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
-                buffer = event.buf,
-                group = highlight_augroup,
-                callback = vim.lsp.buf.document_highlight,
-            })
-            vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
-                buffer = event.buf,
-                group = highlight_augroup,
-                callback = vim.lsp.buf.clear_references,
-            })
+        if not client or not client:supports_method('textDocument/documentHighlight', event.buf) then
+            return
         end
+
+        vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+            buffer = event.buf,
+            group = highlight_augroup,
+            callback = vim.lsp.buf.document_highlight,
+        })
+        vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
+            buffer = event.buf,
+            group = highlight_augroup,
+            callback = vim.lsp.buf.clear_references,
+        })
     end,
 })
