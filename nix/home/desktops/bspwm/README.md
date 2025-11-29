@@ -1,4 +1,5 @@
 ## Setup
+
 Add `bspwm.desktop` to `/usr/share/xsessions/` with:
 
 ```

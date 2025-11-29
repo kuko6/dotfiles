@@ -5,6 +5,7 @@
     ../../default.nix
   ];
 
+  xsession.enable = true;
   xsession.windowManager.bspwm = {
     enable = true;
   };
@@ -15,6 +16,7 @@
     rofi
     feh
     betterlockscreen
+    alacritty
   ];
 
   services = {

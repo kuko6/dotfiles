@@ -1,18 +1,14 @@
 # River Setup
-<!--
-- [Tumbleweed - no DE](#tumbleweed---no-de)
-- [Starting from Desktop Environment](#starting-from-desktop-environment)
--->
 
-## Tumbleweed - no DE
-- can’t get this one to work with river installed with nix, it has to be with zypper
+## minimal (no DE) Tumbleweed
 
-```bash
+Can’t get this one to work with river installed with nix, it has to be with zypper
+```sh
 sudo zypper refresh
 sudo zypper update
 ```
 
-- install dependencies
+Install dependencies
 ```sh
 sudo zypper in river
 ```
@@ -20,11 +16,12 @@ sudo zypper in river
 - maybe `wlroots, wayland`
 
 ### Setting up Display Manager
+
 ```sh
 sudo zypper in greetd gtkgreet cage
 ```
 
-- edit `/etc/greetd/config.toml`
+Edit `/etc/greetd/config.toml`
 ```toml
 [terminal]
 vt = 1
@@ -38,28 +35,19 @@ command = "river"
 user = "kuko"
 ```
 
-- enable the DM service
+Enable the DM service
 ```
 sudo systemctl enable greetd
 ```
-<!--
-- *optionally disable getty (idk, if it is a good idea but it worked after that)*
-```
-sudo systemctl disable getty@tty1
-```
--->
 
-- start the service
+Start the service
 ```
 sudo systemctl start greetd
 ```
 
 ## Starting from Desktop Environment
-- tested on GNOME but should also work for KDE
 
-### Launching
 Add `river.desktop` to `/usr/share/wayland-sessions/` with:
-
 ```
 [Desktop Entry]
 Name=River
@@ -68,19 +56,8 @@ Exec=start-river
 Type=Application
 ```
 
-move `desktops/river/start-river` to `/usr/local/bin`
+Move `desktops/river/start-river` to `/usr/local/bin`
 
-<!--
-### App fix
-To remove minimize / maximize / close from gnome apps add:
-
-```
-[Settings]
-gtk-decoration-layout=:
-```
-
-to `~/.config/gtk-4.0/settings.ini` and (or) `~/.config/gtk-3.0/settings.ini`
--->
 <!--
 ## Ref
 

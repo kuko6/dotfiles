@@ -3,7 +3,7 @@
 {
   imports = [
     ../../default.nix
-    ../sway/default.nix
+    ../bspwm/default.nix
   ];
 
   targets.genericLinux.enable = true;

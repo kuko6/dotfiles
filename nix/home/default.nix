@@ -47,24 +47,24 @@
 
   gtk = {
    enable = true;
-   #  theme = {
-   #    name = "catppuccin-mocha-lavender-compact+normal";
-   #     package = pkgs.catppuccin-gtk.override {
-   #     accents = [ "lavender" ];
-   #     size = "compact";
-   #     tweaks = [ "normal" ];
-   #     variant = "mocha";
-   #   };
-   # };
-   # iconTheme = {
-   #   name = "Papirus";
-   #   package = pkgs.papirus-icon-theme;
-   # };
-   # cursorTheme = {
-   #   name = "macOS";
-   #   package = pkgs.apple-cursor;
-   #   size = 24;
-   # };
+    theme = {
+      name = "catppuccin-mocha-lavender-compact+normal";
+       package = pkgs.catppuccin-gtk.override {
+       accents = [ "lavender" ];
+       size = "compact";
+       tweaks = [ "normal" ];
+       variant = "mocha";
+     };
+   };
+   iconTheme = {
+     name = "Papirus";
+     package = pkgs.papirus-icon-theme;
+   };
+   cursorTheme = {
+     name = "macOS";
+     package = pkgs.apple-cursor;
+     size = 24;
+   };
   };
 
   # Creates common user directories

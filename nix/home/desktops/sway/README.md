@@ -1,7 +1,6 @@
 ## Setup
-Add `sway.desktop` to `/usr/share/wayland-sessions/` with:
 
-# add --unsupported-gpu for nvidia GPUs
+Add `sway.desktop` to `/usr/share/wayland-sessions/` with:
 
 ```
 [Desktop Entry]
@@ -11,3 +10,5 @@ Exec=sway --unsupported-gpu
 Type=Application
 DesktopNames=sway;wlroots
 ```
+
+add `--unsupported-gpu` for nvidia GPUs.
