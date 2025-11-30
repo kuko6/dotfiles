@@ -4,8 +4,9 @@
 
 # terminal emulator
 super + shift + Return
-  alacritty
-	# gnome-terminal --hide-menubar
+  # alacritty
+  # ghostty
+	gnome-terminal --hide-menubar
 
 # program launcher
 super + p
@@ -18,6 +19,7 @@ super + Escape
 # open powermenu
 super + shift + e
 	~/.local/bin/rofi-powermenu.sh
+
 #
 # bspwm hotkeys
 #

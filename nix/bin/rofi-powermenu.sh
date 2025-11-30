@@ -3,7 +3,7 @@
 # entries="Logout\nSleep\nReboot\nShutdown"
 entries="Logout\nReboot\nShutdown"
 
-selected=$(echo $entries | rofi -dmenu \
+selected=$(printf $entries | rofi -dmenu \
     -theme-str "window {width: 12em;} listview {lines: 3;}" \
     -p "Powermenu: ")
 

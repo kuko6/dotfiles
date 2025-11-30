@@ -16,7 +16,6 @@
     rofi
     feh
     betterlockscreen
-    alacritty
   ];
 
   services = {

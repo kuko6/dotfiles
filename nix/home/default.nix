@@ -33,10 +33,10 @@
       source = ../../config/nvim;
       recursive = true;
     };
-    "${config.xdg.configHome}/helix" = {
-      source = ../../config/helix;
-      recursive = true;
-    };
+    # "${config.xdg.configHome}/helix" = {
+    #   source = ../../config/helix;
+    #   recursive = true;
+    # };
     ".local/bin" = {
       source = ../bin;
       recursive = true;
@@ -82,7 +82,6 @@
   home.packages = with pkgs; [
     starship
     tmux
-    helix
     neovim
     fastfetch
     btop
