@@ -32,23 +32,26 @@ return {
         },
         opts_extend = { "sources.default" }
     },
-    {
-        "zbirenbaum/copilot.lua",
-        cmd = "Copilot",
-        event = "InsertEnter",
-        config = function()
-            require("copilot").setup({
-                suggestion = {
-                    enabled = true,
-                    auto_trigger = false,
-                    keymap = {
-                        accept = "<M-Tab>",
-                    },
-                },
-                panel = {
-                    enabled = false,
-                },
-            })
-        end,
-    },
+
+    -- disabled for now as I don't find it particularly useful
+    -- auth with :Copilot
+    -- {
+    --     "zbirenbaum/copilot.lua",
+    --     cmd = "Copilot",
+    --     event = "InsertEnter",
+    --     config = function()
+    --         require("copilot").setup({
+    --             suggestion = {
+    --                 enabled = false, -- this one should be true for it to work correctly
+    --                 auto_trigger = false,
+    --                 keymap = {
+    --                     accept = "<M-Tab>",
+    --                 },
+    --             },
+    --             panel = {
+    --                 enabled = false,
+    --             },
+    --         })
+    --     end,
+    -- },
 }
