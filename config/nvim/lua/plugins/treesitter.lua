@@ -1,13 +1,17 @@
 return {
     {
+        -- so on master is an old, no longer updated version of the plugin
+        -- the new one, on main, doesnt support all the features and migrating
+        -- isnt that straight-forward, so for now I would rather keep it like this
         "nvim-treesitter/nvim-treesitter",
+        branch = "master",
+        lazy = false,
         build = ":TSUpdate",
         dependencies = {
-          "nvim-treesitter/nvim-treesitter-textobjects"
+          { "nvim-treesitter/nvim-treesitter-textobjects", branch = "master" },
         },
         config = function()
-            local configs = require("nvim-treesitter.configs")
-            configs.setup({
+            require("nvim-treesitter.configs").setup({
                 ensure_installed = { "python", "javascript", "typescript", "bash" },
                 sync_install = false,
                 highlight = { enable = true },
