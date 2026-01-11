@@ -1,9 +1,13 @@
-# alias notes="hx -w ~/Notes"
 alias notes="cd ~/Notes && nvim"
 alias dotfiles="cd ~/Developer/dotfiles"
 alias obsidian="open ~/Applications/Obsidian.app"
 
 export EDITOR=nvim
+
+export HISTSIZE=10000
+export SAVEHIST=$HISTSIZE
+setopt EXTENDED_HISTORY
+source <(fzf --zsh)
 
 # Terminal theme #
 export CLICOLOR=1
