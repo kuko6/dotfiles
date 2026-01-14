@@ -44,6 +44,12 @@ map('n', '[d', vim.diagnostic.goto_prev, 'Go to prev diagnostic')
 map('n', ']d', vim.diagnostic.goto_next, 'Go to next diagnostic')
 map('n', '<leader>dd', vim.diagnostic.setloclist, 'Show diagnostics bar')
 
+vim.keymap.set("n", "<leader>i", function()
+  local bufnr = vim.api.nvim_get_current_buf()
+  local enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr })
+  vim.lsp.inlay_hint.enable(not enabled, { bufnr = bufnr })
+end, { desc = "Toggle inlay hints" })
+
 map('n', '<leader>k', vim.lsp.buf.hover, 'LSP: Hover under cursor')
 map('n', 'gi', vim.lsp.buf.implementation, 'LSP: Go to implementation')
 map('n', 'gd', vim.lsp.buf.definition, 'LSP: Go to definition')

@@ -37,6 +37,14 @@ vim.lsp.config.pyright = {
     },
 }
 
+vim.lsp.config.ty = {
+    cmd = { 'ty', 'server' },
+    filetypes = { 'python' },
+    root_markers = python_root_markers,
+    single_file_support = true,
+    -- settings = { ty = { } }
+}
+
 vim.lsp.config.ruff = {
     cmd = { 'ruff', 'server', '--preview' },
     filetypes = { 'python' },
@@ -146,7 +154,8 @@ vim.lsp.config.svelte = {
 }
 
 -- Enable LSPs
-vim.lsp.enable('pyright')
+-- vim.lsp.enable('pyright')
+vim.lsp.enable('ty')
 vim.lsp.enable('ruff')
 vim.lsp.enable('tinymist')
 vim.lsp.enable('sourcekit')
@@ -177,4 +186,16 @@ vim.api.nvim_create_autocmd("LspAttach", {
             callback = vim.lsp.buf.clear_references,
         })
     end,
+})
+
+-- inlay hints
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    if not client or not client.supports_method("textDocument/inlayHint") then
+      return
+    end
+
+    vim.lsp.inlay_hint.enable(false, { bufnr = args.buf })
+  end,
 })
