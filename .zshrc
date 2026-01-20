@@ -20,8 +20,16 @@ parse_git_branch() {
 COLOR_DEF="%f"
 COLOR_GIT="%F{6}"
 COLOR_HOST="%F{15}"
-COLOR_DIR="%F{1}"
 COLOR_VENV="%F{10}"
+
+case "$HOST" in
+  Jakub-MBP*)
+    COLOR_DIR="%F{5}"
+    ;;
+  *)
+    COLOR_DIR="%F{1}"
+    ;;
+esac
 
 setopt PROMPT_SUBST
 export PROMPT='${COLOR_HOST}%n@%m ${COLOR_DIR}%. ${COLOR_GIT}$(parse_git_branch)${COLOR_DEF}> '

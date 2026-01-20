@@ -23,6 +23,10 @@ link() {
   fi
 }
 
+# copy zsh config
+cp ~/.zshrc ~/.zshrc.local
+cp -f "$(pwd)/.zshrc" ~/.zshrc
+
 # create symlinks
 link "$(pwd)/config/helix" ~/.config/helix "hx"
 link "$(pwd)/config/nvim" ~/.config/nvim "nvim"
@@ -47,7 +51,7 @@ fi
 
 # TODO:
 # - probably differentiate if its on home computer or work because the paths are different
-# - I guess we can use hostname or set and ENV variable in .zshrc
+# - I guess we can use hostname or set an ENV variable in .zshrc
 link "$HOME/Library/Mobile Documents/com~apple~CloudDocs/Obsidian/Kuko's Vault/" ~/Notes
 
 link "$(pwd)/bin/daily_note.sh" ~/.local/bin/standup
