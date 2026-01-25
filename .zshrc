@@ -26,6 +26,9 @@ case "$HOST" in
   Jakub-MBP*)
     COLOR_DIR="%F{5}"
     ;;
+  Menton*)
+    COLOR_DIR="%F{3}"
+    ;;
   *)
     COLOR_DIR="%F{1}"
     ;;
@@ -34,6 +37,7 @@ esac
 setopt PROMPT_SUBST
 export PROMPT='${COLOR_HOST}%n@%m ${COLOR_DIR}%. ${COLOR_GIT}$(parse_git_branch)${COLOR_DEF}> '
 
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+if [[ "$(uname)" == "Darwin" ]]; then
+  source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+fi

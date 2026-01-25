@@ -24,8 +24,12 @@ link() {
 }
 
 # copy zsh config
-cp ~/.zshrc ~/.zshrc.local
-cp -f "$(pwd)/.zshrc" ~/.zshrc
+if [ ! -e ~/.zshrc.local ]; then
+  cp ~/.zshrc ~/.zshrc.local
+  cp -f "$(pwd)/.zshrc" ~/.zshrc
+else
+  echo "~/.zshrc has already been copied"
+fi
 
 # create symlinks
 link "$(pwd)/config/helix" ~/.config/helix "hx"
@@ -49,9 +53,16 @@ if command -v bat >/dev/null 2>&1; then
   fi
 fi
 
-# TODO:
-# - probably differentiate if its on home computer or work because the paths are different
-# - I guess we can use hostname or set an ENV variable in .zshrc
-link "$HOME/Library/Mobile Documents/com~apple~CloudDocs/Obsidian/Kuko's Vault/" ~/Notes
+# create shortcut for obsidian vault
+if [[ "$(uname)" == "Darwin" ]]; then
+  case "$(hostname)" in
+    Kukov-MacBook-Air*)
+      link "$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents/Kuko's Vault/" ~/Notes
+      ;;
+    *)
+      link "$HOME/Library/Mobile Documents/com~apple~CloudDocs/Obsidian/Kuko's Vault/" ~/Notes
+      ;;
+  esac
+fi
 
 link "$(pwd)/bin/daily_note.sh" ~/.local/bin/standup
