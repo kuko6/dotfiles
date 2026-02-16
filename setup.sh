@@ -39,6 +39,10 @@ link "$(pwd)/config/tmux" ~/.config/tmux "tmux"
 link "$(pwd)/config/ghostty" ~/.config/ghostty "ghostty"
 link "$(pwd)/config/zed" ~/.config/zed "zed"
 
+# claude code
+link "$(pwd)/config/claude/settings.json" ~/.claude/settings.json "claude"
+link "$(pwd)/config/claude/statusline.sh" ~/.claude/statusline.sh "claude"
+
 # special case for bat
 link "$(pwd)/config/bat" ~/.config/bat "bat"
 

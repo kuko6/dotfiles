@@ -23,7 +23,7 @@ COLOR_HOST="%F{15}"
 COLOR_VENV="%F{10}"
 
 case "$HOST" in
-  Jakub-MBP*)
+  Jakub-MBP | Mac*)
     COLOR_DIR="%F{5}"
     ;;
   Menton*)
