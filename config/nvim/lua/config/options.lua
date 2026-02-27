@@ -10,9 +10,10 @@ vim.opt.breakindent = true
 vim.opt.showmode = true
 vim.opt.scrolloff = 5
 vim.opt.smartindent = true
+vim.g.netrw_list_hide = '\\.DS_Store'
 
 vim.opt.number = true
-vim.opt.relativenumber = true
+vim.opt.relativenumber = false
 vim.opt.hlsearch = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
