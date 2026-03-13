@@ -61,6 +61,12 @@ map('n', '<leader>=', function()
     vim.lsp.buf.format({ async = true })
 end, 'LSP: Format')
 
+-- toggle softwrap for current buffer
+map('n', '<leader>w', function()
+    vim.wo.wrap = not vim.wo.wrap
+    vim.notify('Softwrap ' .. (vim.wo.wrap and 'enabled' or 'disabled'))
+end, 'Toggle softwrap')
+
 -- git keybinds
 local gitsigns = require('gitsigns')
 map('n', 'do', gitsigns.preview_hunk, 'Git: Preview hunk')

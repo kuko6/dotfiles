@@ -58,7 +58,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- set softwrap for text files
 vim.api.nvim_create_autocmd({'BufEnter', 'BufWinEnter'}, {
-  pattern = {'*.md', '*.typ', '*.txt'},
+  pattern = {'*.md', '*.typ', '*.txt', '*.html'},
   callback = function()
     vim.opt_local.wrap = true
     vim.opt_local.linebreak = true
