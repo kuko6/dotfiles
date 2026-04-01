@@ -17,6 +17,7 @@ vim.pack.add({
   "https://github.com/nvim-mini/mini.statusline",
 })
 
+-- Pack utilities
 local function remove_inactive_plugins()
   local inactive = vim.iter(vim.pack.get())
       :filter(function(x) return not x.active end)
@@ -37,7 +38,18 @@ local function remove_inactive_plugins()
   end
 end
 
+local function list_plugins()
+  local chunks = {}
+  for _, x in ipairs(vim.pack.get()) do
+    local line = string.format("%-40s [%s]\n", x.spec.name, x.active and "active" or "inactive")
+    local hl = x.active and "Normal" or "Comment"
+    table.insert(chunks, { line, hl })
+  end
+  vim.api.nvim_echo(chunks, false, {})
+end
+
 vim.api.nvim_create_user_command("PackClean", remove_inactive_plugins, {})
+vim.api.nvim_create_user_command("PackList", list_plugins, {})
 vim.api.nvim_create_user_command("PackUpdate", function()
   vim.pack.update()
 end, {})
@@ -52,6 +64,7 @@ vim.api.nvim_create_autocmd("InsertEnter", {
   end,
 })
 
+-- theme
 require("rose-pine").setup({
   variant = "moon",      -- auto, main, moon, or dawn
   dark_variant = "moon", -- main, moon, or dawn
@@ -105,6 +118,7 @@ require("nvim-treesitter-textobjects").setup {
   move = { set_jumps = true }
 }
 
+-- completions
 require("blink.cmp").setup({
   keymap = {
     preset = "enter",
@@ -125,6 +139,7 @@ require("blink.cmp").setup({
   fuzzy = { implementation = "prefer_rust_with_warning" },
 })
 
+-- mini
 require("mini.move").setup()
 require("mini.surround").setup()
 require("mini.ai").setup { n_lines = 500 }
