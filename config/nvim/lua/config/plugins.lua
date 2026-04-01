@@ -1,13 +1,14 @@
 vim.pack.add({
   { src = "https://github.com/rose-pine/neovim",                            name = "rose-pine" },
-  { src = "https://github.com/nvim-treesitter/nvim-treesitter",             branch = "master" },
-  { src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects", branch = "master" },
-  { src = "https://github.com/saghen/blink.cmp",                            version = vim.version.range('1.0') },
+  { src = "https://github.com/nvim-treesitter/nvim-treesitter",             branch = "main" },
+  { src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects", branch = "main" },
+  { src = "https://github.com/saghen/blink.cmp",                            version = vim.version.range("1") },
   "https://github.com/rafamadriz/friendly-snippets",
   "https://github.com/ibhagwan/fzf-lua",
   "https://github.com/lewis6991/gitsigns.nvim",
   "https://github.com/lukas-reineke/indent-blankline.nvim",
   "https://github.com/folke/which-key.nvim",
+  "https://github.com/norcalli/nvim-colorizer.lua",
   "https://github.com/nvim-mini/mini.ai",
   "https://github.com/nvim-mini/mini.surround",
   "https://github.com/nvim-mini/mini.pairs",
@@ -41,129 +42,74 @@ vim.api.nvim_create_user_command("PackUpdate", function()
   vim.pack.update()
 end, {})
 
+-- configs for plugins
+
 -- lazy loading, maybe?
-vim.api.nvim_create_autocmd('InsertEnter', {
+vim.api.nvim_create_autocmd("InsertEnter", {
   once = true,
   callback = function()
     require("mini.pairs").setup()
   end,
 })
 
+require("rose-pine").setup({
+  variant = "moon",      -- auto, main, moon, or dawn
+  dark_variant = "moon", -- main, moon, or dawn
+  styles = {
+    bold = false,
+    italic = false,
+    transparency = false,
+  },
+  highlight_groups = {
+    Visual = { bg = "highlight_high", inherit = false },
+  },
+})
+vim.cmd.colorscheme("rose-pine")
+
 require("fzf-lua").setup({
   "max-perf",
-  defaults = {
-    multiprocess = true
-  }
+  multiprocess = true
 })
 
--- require("gitsigns").setup({
---   disable_filetypes = { 'netrw' },
--- })
+require("colorizer").setup({
+  "*",
+  css = { rgb_fn = true },
+})
 
 require("which-key").setup({
   delay = 800,
   icons = { mappings = false }
 })
 
-require("ibl").setup(
-  {
-    scope = {
-      enabled = false
-      -- show_start = false,
-      -- show_end = false,
-    },
-    indent = {
-      char = "│",
-      tab_char = "│",
-    },
-  }
-)
+require("ibl").setup({
+  scope = { enabled = false },
+  indent = { char = "│", tab_char = "│" },
+})
 
-require("nvim-treesitter").setup({
-  ensure_installed = { "python", "javascript", "typescript", "bash" },
-  sync_install = false,
-  highlight = { enable = true },
-  indent = { enable = true },
-  textobjects = {
-    select = {
-      enable = true,
-      lookahead = true,
-      keymaps = {
-        ["af"] = { query = "@function.outer", desc = "Select around function" },
-        ["if"] = { query = "@function.inner", desc = "Select inside function" },
-        ["ap"] = { query = "@parameter.outer", desc = "Select around parameters" },
-        ["ip"] = { query = "@parameter.inner", desc = "Select inside parameters" }
-      },
-      selection_modes = {
-        ["@parameter.outer"] = "v",
-        ["@function.outer"] = "V"
-      }
-    },
-    move = {
-      enable = true,
-      set_jumps = true,
-      goto_next_start = {
-        ["]f"] = "@function.outer",
-      },
-      goto_previous_start = {
-        ["[f"] = "@function.outer"
-      }
+-- treesitter
+require('nvim-treesitter').install { "python", "javascript", "typescript" }
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "svelte", "markdown", "lua", "typst", "typescript", "javascript", "c", "python" },
+  callback = function() vim.treesitter.start() end,
+})
+vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()" -- indentation
+
+require("nvim-treesitter-textobjects").setup {
+  select = {
+    lookahead = true,
+    selection_modes = {
+      ["@parameter.outer"] = "v",
+      ["@function.outer"] = "V"
     }
-  }
-})
-
-local function copilot_status()
-  if vim.g.copilot_on then
-    return " "
-  end
-  return " "
-end
-
-require('mini.tabline').setup()
-require('mini.move').setup()
-require('mini.tabline').setup()
-require('mini.ai').setup { n_lines = 500 }
-
-local statusline = require('mini.statusline')
-statusline.setup({
-  use_icons = true,
-  content = {
-    active = function()
-      local mode, mode_hl = statusline.section_mode({ trunc_width = 70 })
-      local git = statusline.section_git({ trunc_width = 40 })
-      -- local diff = statusline.section_diff({ trunc_width = 80 })
-      local diagnostics = statusline.section_diagnostics({ trunc_width = 70 })
-      -- local lsp = statusline.section_lsp({ trunc_width = 80 })
-      local filename = statusline.section_filename({ trunc_width = 100 })
-      local fileinfo = statusline.section_fileinfo({ trunc_width = 140 })
-      -- local search = statusline.section_searchcount({ trunc_width = 70 })
-      local location = statusline.section_location()
-
-      return statusline.combine_groups({
-        { hl = mode_hl,                  strings = { mode } },
-        { hl = 'MiniStatuslineDevinfo',  strings = { git } },
-        { hl = 'MiniStatuslineFilename', strings = { filename } },
-        '%=', -- separator
-        { hl = 'MiniStatuslineDevinfo',  strings = { copilot_status() } },
-        { hl = 'MiniStatuslineDevinfo',  strings = { diagnostics } },
-        { hl = 'MiniStatuslineFileinfo', strings = { fileinfo, location } },
-      })
-    end,
   },
-})
-
-statusline.section_location = function()
-  return '%2l:%-2v'
-end
+  move = { set_jumps = true }
+}
 
 require("blink.cmp").setup({
   keymap = {
-    preset = 'enter',
-    ['<Up>'] = { 'select_prev', 'fallback' },
-    ['<Down>'] = { 'select_next', 'fallback' },
-  },
-  appearance = {
-    nerd_font_variant = 'mono'
+    preset = "enter",
+    ["<Up>"] = { "select_prev", "fallback" },
+    ["<Down>"] = { "select_next", "fallback" },
   },
   signature = { enabled = true },
   completion = {
@@ -173,11 +119,44 @@ require("blink.cmp").setup({
       auto_brackets = { enabled = true },
     },
     menu = {
-      draw = { treesitter = { 'lsp' } },
+      draw = { treesitter = { "lsp" } },
     },
-  },
-  sources = {
-    default = { 'lsp', 'path', 'snippets', 'buffer' },
   },
   fuzzy = { implementation = "prefer_rust_with_warning" },
 })
+
+require("mini.move").setup()
+require("mini.surround").setup()
+require("mini.ai").setup { n_lines = 500 }
+require("mini.tabline").setup()
+
+-- NOTE: try to find a way how to use the native diagnostics in there
+-- because those do look nice
+local statusline = require("mini.statusline")
+statusline.setup({
+  use_icons = true,
+  content = {
+    active = function()
+      local mode, mode_hl = statusline.section_mode({ trunc_width = 70 })
+      local git = statusline.section_git({ trunc_width = 40 })
+      -- local diff = statusline.section_diff({ trunc_width = 80 })
+      local diagnostics = statusline.section_diagnostics({ trunc_width = 70 })
+      local filename = statusline.section_filename({ trunc_width = 100 })
+      local fileinfo = statusline.section_fileinfo({ trunc_width = 140 })
+      local location = statusline.section_location()
+
+      return statusline.combine_groups({
+        { hl = mode_hl,                  strings = { mode } },
+        { hl = "MiniStatuslineDevinfo",  strings = { git } },
+        { hl = "MiniStatuslineFilename", strings = { filename } },
+        "%=", -- separator
+        { hl = "MiniStatuslineDevinfo",  strings = { diagnostics } },
+        { hl = "MiniStatuslineFileinfo", strings = { fileinfo, location } },
+      })
+    end,
+  },
+})
+
+statusline.section_location = function()
+  return "%2l:%-2v"
+end

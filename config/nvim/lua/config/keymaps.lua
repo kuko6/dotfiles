@@ -22,8 +22,28 @@ vim.keymap.set('n', '<leader>g', fzf.git_status, { desc = 'Open changed / diff p
 vim.keymap.set('n', '<leader>?', fzf.keymaps, { desc = 'Show keymaps' })
 
 local map = function(mode, keys, func, desc)
-    vim.keymap.set(mode, keys, func, { noremap = true, silent = true, desc = desc })
+  vim.keymap.set(mode, keys, func, { noremap = true, silent = true, desc = desc })
 end
+
+-- treesitter keybinds
+vim.keymap.set({ "x", "o" }, "af", function()
+  require "nvim-treesitter-textobjects.select".select_textobject("@function.outer", "textobjects")
+end, { desc = "Select around function" })
+vim.keymap.set({ "x", "o" }, "if", function()
+  require "nvim-treesitter-textobjects.select".select_textobject("@function.inner", "textobjects")
+end, { desc = "Select inside function" })
+vim.keymap.set({ "x", "o" }, "ap", function()
+  require "nvim-treesitter-textobjects.select".select_textobject("@parameter.outer", "textobjects")
+end, { desc = "Select around parameter" })
+vim.keymap.set({ "x", "o" }, "ip", function()
+  require "nvim-treesitter-textobjects.select".select_textobject("@parameter.inner", "textobjects")
+end, { desc = "Select inside parameter" })
+vim.keymap.set({ "n", "x", "o" }, "]f", function()
+  require("nvim-treesitter-textobjects.move").goto_next_start("@function.outer", "textobjects")
+end, { desc = "Go to next function" })
+vim.keymap.set({ "n", "x", "o" }, "[f", function()
+  require("nvim-treesitter-textobjects.move").goto_previous_start("@function.outer", "textobjects")
+end, { desc = "Go to previous function" })
 
 -- copilot keybinds
 vim.g.copilot_on = false
@@ -58,13 +78,13 @@ map('n', 'cd', vim.lsp.buf.rename, 'LSP: Rename')
 map('n', 'g.', vim.lsp.buf.code_action, 'LSP: Code action')
 map('n', '<leader>a', vim.lsp.buf.code_action, 'LSP: Code action')
 map('n', '<leader>=', function()
-    vim.lsp.buf.format({ async = true })
+  vim.lsp.buf.format({ async = true })
 end, 'LSP: Format')
 
 -- toggle softwrap for current buffer
 map('n', '<leader>w', function()
-    vim.wo.wrap = not vim.wo.wrap
-    vim.notify('Softwrap ' .. (vim.wo.wrap and 'enabled' or 'disabled'))
+  vim.wo.wrap = not vim.wo.wrap
+  vim.notify('Softwrap ' .. (vim.wo.wrap and 'enabled' or 'disabled'))
 end, 'Toggle softwrap')
 
 -- git keybinds
@@ -75,19 +95,19 @@ map('n', '<leader>hs', gitsigns.stage_hunk, 'Git: Stage hunk')
 map('n', '<leader>hr', gitsigns.reset_hunk, 'Git: Reset hunk')
 
 map('n', ']c', function()
-    if vim.wo.diff then
-        vim.cmd.normal({ ']c', bang = true })
-    else
-        gitsigns.nav_hunk('next')
-    end
+  if vim.wo.diff then
+    vim.cmd.normal({ ']c', bang = true })
+  else
+    gitsigns.nav_hunk('next')
+  end
 end, 'Git: Navigate to next change')
 
 map('n', '[c', function()
-    if vim.wo.diff then
-        vim.cmd.normal({ '[c', bang = true })
-    else
-        gitsigns.nav_hunk('prev')
-    end
+  if vim.wo.diff then
+    vim.cmd.normal({ '[c', bang = true })
+  else
+    gitsigns.nav_hunk('prev')
+  end
 end, 'Git: Navigate to prev change')
 
 map('n', '<leader>hQ', function() gitsigns.setqflist('all') end, 'Git: Show changes in project')
