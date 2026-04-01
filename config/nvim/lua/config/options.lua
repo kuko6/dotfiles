@@ -34,13 +34,14 @@ vim.opt.completeopt = {
     'noselect'
 }
 
+vim.api.nvim_set_hl(0, 'BugComment', { bg = '#9BDE9C', fg = 'black', bold = false })
 vim.api.nvim_set_hl(0, 'TodoComment', { bg = '#A7CED7', fg = 'black', bold = false })
 vim.api.nvim_set_hl(0, 'NoteComment', { bg = '#BFA8E3', fg = 'black', bold = false })
 vim.api.nvim_set_hl(0, 'FixComment', { bg = '#DB7692', fg = 'black', bold = false })
-
 vim.api.nvim_create_autocmd({'BufRead', 'BufNewFile'}, {
   pattern = '*',
   callback = function()
+    vim.fn.matchadd('BugComment', 'BUG:')
     vim.fn.matchadd('TodoComment', 'TODO:')
     vim.fn.matchadd('NoteComment', 'NOTE:')
     vim.fn.matchadd('FixComment', 'FIX:')
