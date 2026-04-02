@@ -41,7 +41,7 @@ end
 local function list_plugins()
   local chunks = {}
   for _, x in ipairs(vim.pack.get()) do
-    local line = string.format("%-40s [%s]\n", x.spec.name, x.active and "active" or "inactive")
+    local line = string.format("%-40s %-10s [%s]\n", x.spec.name, x.rev:sub(1, 7), x.active and "active" or "inactive")
     local hl = x.active and "Normal" or "Comment"
     table.insert(chunks, { line, hl })
   end
@@ -100,10 +100,19 @@ require("ibl").setup({
 })
 
 -- treesitter
-require('nvim-treesitter').install { "python", "javascript", "typescript" }
+require('nvim-treesitter').install { "svelte", "markdown", "lua", "typst", "typescript", "javascript", "c", "python" }
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "svelte", "markdown", "lua", "typst", "typescript", "javascript", "c", "python" },
   callback = function() vim.treesitter.start() end,
+})
+vim.api.nvim_create_autocmd('PackChanged', {
+  callback = function(ev)
+    local name, kind = ev.data.spec.name, ev.data.kind
+    if name == 'nvim-treesitter' and kind == 'update' then
+      if not ev.data.active then vim.cmd.packadd('nvim-treesitter') end
+      vim.cmd('TSUpdate')
+    end
+  end
 })
 vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()" -- indentation
 
