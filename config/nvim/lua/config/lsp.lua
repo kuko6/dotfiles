@@ -153,6 +153,19 @@ vim.lsp.config.svelte = {
     settings = {},
 }
 
+vim.lsp.config['lua_ls'] = {
+  cmd = { 'lua-language-server' },
+  filetypes = { 'lua' },
+  root_markers = { { '.luarc.json', '.luarc.jsonc' }, '.git' },
+  settings = {
+    Lua = {
+      runtime = {
+        version = 'LuaJIT',
+      }
+    }
+  }
+}
+
 -- Enable LSPs
 -- vim.lsp.enable('pyright')
 vim.lsp.enable('ty')
@@ -165,6 +178,7 @@ vim.lsp.enable('deno')
 vim.lsp.enable('tsserver')
 vim.lsp.enable('tailwindcss')
 vim.lsp.enable('svelte')
+vim.lsp.enable('lua_ls')
 
 -- highlight symbol under cursor
 vim.api.nvim_create_autocmd("LspAttach", {

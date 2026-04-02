@@ -1,2 +1,2 @@
 # Neovim setup
-A very minimal neovim setup with [lazy.nvim](https://github.com/folke/lazy.nvim)
+A very minimal neovim setup with the native plugin manager [Pack](https://neovim.io/doc/user/pack/#vim.pack)
