@@ -29,16 +29,16 @@ vim.opt.expandtab = true
 
 -- completion
 vim.opt.completeopt = {
-    'menu',
-    'menuone',
-    'noselect'
+  'menu',
+  'menuone',
+  'noselect'
 }
 
 vim.api.nvim_set_hl(0, 'BugComment', { bg = '#9BDE9C', fg = 'black', bold = false })
 vim.api.nvim_set_hl(0, 'TodoComment', { bg = '#A7CED7', fg = 'black', bold = false })
 vim.api.nvim_set_hl(0, 'NoteComment', { bg = '#BFA8E3', fg = 'black', bold = false })
 vim.api.nvim_set_hl(0, 'FixComment', { bg = '#DB7692', fg = 'black', bold = false })
-vim.api.nvim_create_autocmd({'BufRead', 'BufNewFile'}, {
+vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
   pattern = '*',
   callback = function()
     vim.fn.matchadd('BugComment', 'BUG:')
@@ -50,16 +50,16 @@ vim.api.nvim_create_autocmd({'BufRead', 'BufNewFile'}, {
 
 -- highlight when yanking text
 vim.api.nvim_create_autocmd('TextYankPost', {
-    desc = 'Highlight when yanking (copying) text',
-    group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
-    callback = function()
-        vim.highlight.on_yank()
-    end,
+  desc = 'Highlight when yanking (copying) text',
+  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+  callback = function()
+    vim.highlight.on_yank()
+  end,
 })
 
 -- set softwrap for text files
-vim.api.nvim_create_autocmd({'BufEnter', 'BufWinEnter'}, {
-  pattern = {'*.md', '*.typ', '*.txt', '*.html'},
+vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
+  pattern = { '*.md', '*.typ', '*.txt', '*.html' },
   callback = function()
     vim.opt_local.wrap = true
     vim.opt_local.linebreak = true
