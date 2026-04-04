@@ -112,5 +112,6 @@ end, 'Git: Navigate to prev change')
 
 map('n', '<leader>hQ', function() gitsigns.setqflist('all') end, 'Git: Show changes in project')
 map('n', '<leader>hq', gitsigns.setqflist, 'Git: Show changes in file')
-map('n', '<leader>tb', gitsigns.toggle_current_line_blame, 'Git: Toggle inline blame')
+map('n', '<leader>tb', '<cmd>BlameToggle<cr>', 'Git: Toggle inline blame')
+-- map('n', '<leader>tb', gitsigns.toggle_current_line_blame, 'Git: Toggle inline blame')
 -- map('n', '<leader>gw', gitsigns.toggle_word_diff, 'Git: Toggle word diff')

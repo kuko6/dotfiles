@@ -6,6 +6,7 @@ vim.pack.add({
   "https://github.com/rafamadriz/friendly-snippets",
   "https://github.com/ibhagwan/fzf-lua",
   "https://github.com/lewis6991/gitsigns.nvim",
+  "https://github.com/FabijanZulj/blame.nvim",
   "https://github.com/lukas-reineke/indent-blankline.nvim",
   "https://github.com/folke/which-key.nvim",
   "https://github.com/norcalli/nvim-colorizer.lua",
@@ -98,6 +99,8 @@ require("ibl").setup({
   scope = { enabled = false },
   indent = { char = "│", tab_char = "│" },
 })
+
+require("blame").setup()
 
 -- treesitter
 require('nvim-treesitter').install { "svelte", "markdown", "lua", "typst", "typescript", "javascript", "c", "python" }
