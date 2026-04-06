@@ -65,6 +65,10 @@
       "rev": "cf2a288696b03d0934da713d66c6d71557b5c997",
       "src": "https://github.com/rose-pine/neovim"
     },
+    "seoul256.vim": {
+      "rev": "d9a91d8d4e153274e1ecc0ceb05c37f0d0de84d7",
+      "src": "https://github.com/junegunn/seoul256.vim"
+    },
     "which-key.nvim": {
       "rev": "3aab2147e74890957785941f0c1ad87d0a44c15a",
       "src": "https://github.com/folke/which-key.nvim"

@@ -1,5 +1,6 @@
 vim.pack.add({
   { src = "https://github.com/rose-pine/neovim",                            name = "rose-pine" },
+  -- { src = "https://github.com/junegunn/seoul256.vim" },
   { src = "https://github.com/nvim-treesitter/nvim-treesitter",             branch = "main" },
   { src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects", branch = "main" },
   { src = "https://github.com/saghen/blink.cmp",                            version = vim.version.range("1") },
@@ -66,6 +67,11 @@ vim.api.nvim_create_autocmd("InsertEnter", {
 })
 
 -- theme
+-- vim.opt.background = 'dark'
+-- vim.g.seoul256_background = 236
+-- vim.g.seoul256_srgb = 1 -- fixes colors for some terminals
+-- vim.cmd.colorscheme('seoul256')
+
 require("rose-pine").setup({
   variant = "moon",      -- auto, main, moon, or dawn
   dark_variant = "moon", -- main, moon, or dawn
