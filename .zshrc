@@ -9,10 +9,6 @@ export SAVEHIST=$HISTSIZE
 setopt EXTENDED_HISTORY
 source <(fzf --zsh)
 
-# Terminal theme #
-export CLICOLOR=1
-export LSCOLORS=ExFxBxDxCxegedabagacad
-
 parse_git_branch() {
   git branch 2> /dev/null | sed -n -e "s/^\* \(.*\)/(\1) /p"
 }
@@ -38,6 +34,14 @@ setopt PROMPT_SUBST
 export PROMPT='${COLOR_HOST}%n@%m ${COLOR_DIR}%. ${COLOR_GIT}$(parse_git_branch)${COLOR_DEF}> '
 
 if [[ "$(uname)" == "Darwin" ]]; then
-  source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  export CLICOLOR=1
+  export LSCOLORS=ExFxBxDxCxegedabagacad
   export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+  [[ -f /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] \
+    && source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+else
+  alias ls='ls --color=auto'
+  eval "$(dircolors -b)"
+  [[ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] \
+    && source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
