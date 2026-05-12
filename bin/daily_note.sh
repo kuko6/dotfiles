@@ -10,7 +10,7 @@ show_usage() {
     cat << EOF
 Usage: $(basename "$0") [OPTIONS]
 
-Create and open daily standup notes in Helix.
+Create and open daily standup notes in neovim.
 
 OPTIONS:
     --no-split       Open only today's note without split

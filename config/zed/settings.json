@@ -7,6 +7,23 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "debugger": {
+    "dock": "bottom"
+  },
+  "terminal": {
+    "dock": "bottom"
+  },
+  "agent_servers": {
+    "claude-acp": {
+      "type": "registry"
+    }
+  },
+  "outline_panel": {
+    "dock": "left"
+  },
+  "git_panel": {
+    "dock": "left"
+  },
   "ssh_connections": [
     {
       "host": "192.168.1.164",
@@ -14,18 +31,14 @@
       "args": [],
       "projects": [
         {
-          "paths": [
-            "/Users/jakub/Developer"
-          ]
+          "paths": ["/Users/jakub/Developer"],
         },
         {
-          "paths": [
-            "/Users/jakub/Developer/Orion/TMA-Analysis/./"
-          ]
-        }
+          "paths": ["/Users/jakub/Developer/Orion/TMA-Analysis/./"],
+        },
       ],
-      "nickname": "work-mac"
-    }
+      "nickname": "work-mac",
+    },
   ],
   "icon_theme": "Zed (Default)",
   "edit_predictions": {
@@ -33,66 +46,62 @@
     "mode": "subtle",
     "copilot": {
       "proxy": null,
-      "proxy_no_verify": null
+      "proxy_no_verify": null,
     },
-    "enabled_in_text_threads": false
-  },
-  "features": {
-    "edit_prediction_provider": "zed"
   },
   "show_edit_predictions": true,
   "agent": {
+    "sidebar_side": "right",
+    "dock": "right",
     "default_model": {
       "provider": "copilot_chat",
-      "model": "claude-sonnet-4.5"
+      "model": "claude-sonnet-4.5",
     },
     "default_profile": "ask",
-    "model_parameters": []
+    "model_parameters": [],
   },
   "base_keymap": "VSCode",
   "vim_mode": true,
-  "relative_line_numbers": true,
-  "theme": "Rosé Pine Moon",
+  "theme": {
+    "mode": "dark",
+    "light": "Rosé Pine Dawn",
+    "dark": "Rosé Pine Moon"
+  },
   "experimental.theme_overrides": {
     "syntax": {
       "function": {
-        "font_style": "normal"
-      }
-    }
+        "font_style": "normal",
+      },
+    },
   },
   "telemetry": {
     "diagnostics": false,
-    "metrics": false
+    "metrics": false,
   },
-  "ui_font_size": 14,
-  "buffer_font_size": 12,
-  "buffer_font_family": "CommitMono",
+  "ui_font_size": 14.0,
+  "buffer_font_size": 13.0,
   "buffer_line_height": "comfortable",
-  "title_bar": {
-    "show_branch_icon": true
-  },
-  "chat_panel": {
-    "button": "never"
-  },
   "collaboration_panel": {
-    "button": true
+    "dock": "right",
+    "button": true,
   },
   "tabs": {
     "close_position": "right",
     "file_icons": true,
-    "git_status": true
+    "git_status": true,
   },
   "project_panel": {
+    "dock": "left",
     "scrollbar": {
-      "show": "auto"
-    }
+      "show": "auto",
+    },
   },
   "git": {
     "inline_blame": {
       "enabled": false,
       "delay_ms": 250,
-      "show_commit_summary": true
-    }
+      "show_commit_summary": true,
+    },
   },
   "soft_wrap": "editor_width",
   "languages": {
@@ -102,44 +111,44 @@
         { "code_action": "source.organizeImports.ruff" },
         {
           "language_server": {
-            "name": "ruff"
-          }
-        }
+            "name": "ruff",
+          },
+        },
       ],
-      "language_servers": ["pyright", "ruff"]
+      "language_servers": ["pyright", "ruff"],
       // "language_servers": ["pyrefly", "ruff"]
     },
     "TypeScript": {
       "language_servers": [
-        "deno"
+        "deno",
         // "!typescript-language-server",
         // "!vtsls",
         // "!eslint"
       ],
-      "formatter": "language_server"
-    }
+      "formatter": "language_server",
+    },
   },
   "lsp": {
     "pyright": {
       "settings": {
         "python.analysis": {
           "diagnosticMode": "openFilesOnly",
-          "typeCheckingMode": "off"
-        }
-      }
+          "typeCheckingMode": "off",
+        },
+      },
     },
     "pyrefly": {
       "binary": {
         "path": "/Users/jakub/miniconda3/envs/tma-preprocessing/bin/pyrefly",
-        "arguments": ["lsp"]
+        "arguments": ["lsp"],
       },
       "settings": {
         "pyrefly": {
           "project_includes": ["src/**/*.py", "tests/**/*.py"],
-          "project_excludes": ["**/.[!/.]*", "**/*venv/**"]
+          "project_excludes": ["**/.[!/.]*", "**/*venv/**"],
           // "ignore_errors_in_generated_code": true
-        }
-      }
-    }
-  }
+        },
+      },
+    },
+  },
 }
