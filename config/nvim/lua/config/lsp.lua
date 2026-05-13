@@ -37,6 +37,13 @@ vim.lsp.config.pyright = {
   },
 }
 
+vim.lsp.config.pyrefly = {
+  cmd = { 'pyrefly', 'lsp' },
+  filetypes = { 'python' },
+  root_markers = python_root_markers,
+  single_file_support = true,
+}
+
 vim.lsp.config.ty = {
   cmd = { 'ty', 'server' },
   filetypes = { 'python' },
@@ -168,7 +175,8 @@ vim.lsp.config['lua_ls'] = {
 -- Enable LSPs
 vim.lsp.enable({
   -- 'pyright',
-  'ty',
+  -- 'ty',
+  'pyrefly',
   'ruff',
   'tinymist',
   'sourcekit',
