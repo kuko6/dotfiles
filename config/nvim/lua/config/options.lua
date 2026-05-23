@@ -9,7 +9,6 @@ vim.opt.wrap = false
 vim.opt.breakindent = true
 vim.opt.showmode = true
 vim.opt.scrolloff = 5
-vim.opt.smartindent = true
 vim.g.netrw_list_hide = '\\.DS_Store'
 
 vim.opt.number = true
@@ -18,7 +17,6 @@ vim.opt.hlsearch = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.cursorline = true
-vim.opt.winborder = "rounded"
 vim.opt.signcolumn = "yes"
 vim.opt.termguicolors = true
 
@@ -26,6 +24,7 @@ vim.opt.termguicolors = true
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 0
 vim.opt.expandtab = true
+vim.opt.smartindent = true
 
 -- completion
 vim.opt.completeopt = {

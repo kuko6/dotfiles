@@ -3,7 +3,7 @@ vim.pack.add({
   -- { src = "https://github.com/junegunn/seoul256.vim" },
   { src = "https://github.com/nvim-treesitter/nvim-treesitter",             branch = "main" },
   { src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects", branch = "main" },
-  { src = "https://github.com/saghen/blink.cmp",                            version = vim.version.range("1") },
+  -- { src = "https://github.com/saghen/blink.cmp",                            version = vim.version.range("1") },
   "https://github.com/rafamadriz/friendly-snippets",
   "https://github.com/ibhagwan/fzf-lua",
   "https://github.com/lewis6991/gitsigns.nvim",
@@ -137,25 +137,25 @@ require("nvim-treesitter-textobjects").setup {
 }
 
 -- completions
-require("blink.cmp").setup({
-  keymap = {
-    preset = "enter",
-    ["<Up>"] = { "select_prev", "fallback" },
-    ["<Down>"] = { "select_next", "fallback" },
-  },
-  signature = { enabled = true },
-  completion = {
-    documentation = { auto_show = true, auto_show_delay_ms = 100 },
-    ghost_text = { enabled = false },
-    accept = {
-      auto_brackets = { enabled = true },
-    },
-    menu = {
-      draw = { treesitter = { "lsp" } },
-    },
-  },
-  fuzzy = { implementation = "prefer_rust_with_warning" },
-})
+-- require("blink.cmp").setup({
+--   keymap = {
+--     preset = "enter",
+--     ["<Up>"] = { "select_prev", "fallback" },
+--     ["<Down>"] = { "select_next", "fallback" },
+--   },
+--   signature = { enabled = true },
+--   completion = {
+--     documentation = { auto_show = true, auto_show_delay_ms = 100 },
+--     ghost_text = { enabled = false },
+--     accept = {
+--       auto_brackets = { enabled = true },
+--     },
+--     menu = {
+--       draw = { treesitter = { "lsp" } },
+--     },
+--   },
+--   fuzzy = { implementation = "prefer_rust_with_warning" },
+-- })
 
 -- mini
 require("mini.move").setup()
