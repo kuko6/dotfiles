@@ -17,6 +17,7 @@ vim.pack.add({
   "https://github.com/nvim-mini/mini.move",
   "https://github.com/nvim-mini/mini.tabline",
   "https://github.com/nvim-mini/mini.statusline",
+  "https://github.com/GCBallesteros/jupytext.nvim"
 })
 
 -- Pack utilities
@@ -107,6 +108,9 @@ require("ibl").setup({
 })
 
 require("blame").setup()
+
+-- for opening .ipynb files
+require("jupytext").setup({ style = "light" })
 
 -- treesitter
 require('nvim-treesitter').install { "svelte", "markdown", "lua", "typst", "typescript", "javascript", "c", "python" }
