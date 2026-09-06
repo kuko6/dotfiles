@@ -1,0 +1,25 @@
+{
+  "providers": {
+    "ollama": {
+      "api": "openai-completions",
+      "apiKey": "ollama",
+      "baseUrl": "http://127.0.0.1:11434/v1",
+      "models": [
+        {
+          "_launch": true,
+          "id": "deepseek-v4-flash:cloud",
+          "input": [
+            "text"
+          ]
+        },
+        {
+          "_launch": true,
+          "id": "deepseek-v4-pro:cloud",
+          "input": [
+            "text"
+          ]
+        }
+      ]
+    }
+  }
+}

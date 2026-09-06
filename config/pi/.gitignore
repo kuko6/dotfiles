@@ -1,0 +1,10 @@
+web-search-cache
+
+node_modules
+sessions
+missions
+
+run-history.jsonl
+auth.json
+trust.json
+models-store.json

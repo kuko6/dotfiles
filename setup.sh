@@ -43,6 +43,9 @@ link "$(pwd)/config/zed" ~/.config/zed "zed"
 link "$(pwd)/config/claude/settings.json" ~/.claude/settings.json "claude"
 link "$(pwd)/config/claude/statusline.sh" ~/.claude/statusline.sh "claude"
 
+# pi
+link "$(pwd)/config/pi/agent" ~/.pi/agent "pi"
+
 # special case for bat
 link "$(pwd)/config/bat" ~/.config/bat "bat"
 

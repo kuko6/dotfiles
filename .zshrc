@@ -1,6 +1,7 @@
 alias notes="cd ~/Notes && nvim"
 alias dotfiles="cd ~/Developer/dotfiles"
 alias obsidian="open ~/Applications/Obsidian.app"
+alias sandpi="pi -e ~/.pi/agent/optional-extensions/gondolin"
 
 export EDITOR=nvim
 
