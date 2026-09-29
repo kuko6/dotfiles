@@ -113,10 +113,16 @@ require("blame").setup()
 require("jupytext").setup({ style = "light" })
 
 -- treesitter
-require('nvim-treesitter').install { "svelte", "markdown", "lua", "typst", "typescript", "javascript", "c", "python" }
+local ts_langs = { "svelte", "markdown", "markdown_inline", "lua", "typst", "typescript", "javascript", "tsx", "c", "python" }
+require('nvim-treesitter').install(ts_langs)
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "svelte", "markdown", "lua", "typst", "typescript", "javascript", "c", "python" },
-  callback = function() vim.treesitter.start() end,
+  callback = function(args)
+    local lang = vim.treesitter.language.get_lang(args.match)
+    if vim.treesitter.language.add(lang) then
+      vim.treesitter.start(args.buf)
+      vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+    end
+  end,
 })
 vim.api.nvim_create_autocmd('PackChanged', {
   callback = function(ev)
@@ -127,7 +133,6 @@ vim.api.nvim_create_autocmd('PackChanged', {
     end
   end
 })
-vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()" -- indentation
 
 require("nvim-treesitter-textobjects").setup {
   select = {
