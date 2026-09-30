@@ -6,3 +6,6 @@ Dependencies:
 - `fzf`
 - `fd`
 - `bat`
+
+Use `:Theme <name>` to switch to any installed colorscheme for the current session;
+press Tab to complete names.

@@ -87,6 +87,17 @@ require("rose-pine").setup({
 })
 vim.cmd.colorscheme("rose-pine")
 
+vim.api.nvim_create_user_command("Theme", function(args)
+  local ok, err = pcall(vim.cmd.colorscheme, args.args)
+  if not ok then
+    vim.notify(tostring(err), vim.log.levels.ERROR)
+  end
+end, {
+  nargs = 1,
+  complete = "color",
+  desc = "Switch to an installed colorscheme",
+})
+
 require("fzf-lua").setup({
   "max-perf",
   multiprocess = true
