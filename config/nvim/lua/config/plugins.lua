@@ -113,7 +113,7 @@ require("blame").setup()
 require("jupytext").setup({ style = "light" })
 
 -- treesitter
-local ts_langs = { "svelte", "markdown", "markdown_inline", "lua", "typst", "typescript", "javascript", "tsx", "c", "python" }
+local ts_langs = { "svelte", "html", "css", "markdown", "markdown_inline", "lua", "typst", "typescript", "javascript", "tsx", "c", "python" }
 require('nvim-treesitter').install(ts_langs)
 vim.api.nvim_create_autocmd("FileType", {
   callback = function(args)
