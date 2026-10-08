@@ -125,8 +125,20 @@ vim.lsp.config.deno = {
   settings = {}
 }
 
+-- TypeScript 7+ is native and ships no tsserver.js, so typescript-language-server
+-- fails on it. Use the project's own `tsc --lsp` there, else fall back.
 vim.lsp.config.tsserver = {
-  cmd = { 'typescript-language-server', '--stdio' },
+  cmd = function(dispatchers, config)
+    local tsc = vim.fs.joinpath(config.root_dir or '', 'node_modules', '.bin', 'tsc')
+    local pkg = vim.fs.joinpath(config.root_dir or '', 'node_modules', 'typescript', 'package.json')
+    local native = false
+    if vim.uv.fs_stat(tsc) and vim.uv.fs_stat(pkg) then
+      local ok, data = pcall(vim.json.decode, table.concat(vim.fn.readfile(pkg), '\n'))
+      native = ok and tonumber((data.version or ''):match('^(%d+)')) >= 7
+    end
+    local cmd = native and { tsc, '--lsp', '--stdio' } or { 'typescript-language-server', '--stdio' }
+    return vim.lsp.rpc.start(cmd, dispatchers, { cwd = config.root_dir })
+  end,
   filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
   root_markers = { 'package.json', 'tsconfig.json', 'jsconfig.json' },
   single_file_support = false,
