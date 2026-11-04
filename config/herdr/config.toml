@@ -1,0 +1,38 @@
+onboarding = false
+
+[theme]
+name = "rose-pine"
+auto_switch = false
+
+[terminal]
+# tmux: split-window -c "#{pane_current_path}"
+new_cwd = "follow"
+
+[keys]
+# prefix stays ctrl+b (tmux default)
+
+# tmux: bind h split-window -v (top/bottom), bind v split-window -h (side by side)
+split_horizontal = "prefix+h"
+split_vertical = "prefix+v"
+
+# tmux: bind G new-window lazygit
+# new_worktree used prefix+shift+g, so it moves out of the way
+new_worktree = "prefix+alt+g"
+
+[[keys.command]]
+key = "prefix+shift+g"
+type = "popup"
+command = "lazygit"
+width = "90%"
+height = "90%"
+
+[ui]
+# tmux: status-position bottom
+tab_bar_position = "top"
+tab_bar_right = [
+  { type = "zoom" },
+  { type = "hostname" },
+  { type = "command", command = "pmset -g batt | grep -o '[0-9]*%' | head -1", interval_seconds = 60, timeout_seconds = 2 },
+  { type = "datetime", format = "%d.%m. %H:%M" },
+]
+tab_bar_right_separator = " | "

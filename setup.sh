@@ -38,6 +38,7 @@ link "$(pwd)/config/btop" ~/.config/btop "btop"
 link "$(pwd)/config/tmux" ~/.config/tmux "tmux"
 link "$(pwd)/config/ghostty" ~/.config/ghostty "ghostty"
 link "$(pwd)/config/zed" ~/.config/zed "zed"
+link "$(pwd)/config/herdr" ~/.config/herdr "herdr"
 
 # claude code
 link "$(pwd)/config/claude/settings.json" ~/.claude/settings.json "claude"
