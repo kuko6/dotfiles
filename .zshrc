@@ -3,6 +3,11 @@ alias dotfiles="cd ~/Developer/dotfiles"
 alias obsidian="open ~/Applications/Obsidian.app"
 alias sandpi="pi -e ~/.pi/agent/optional-extensions/gondolin"
 
+# installs ghostty's terminfo on host
+if command -v ghostty &> /dev/null; then
+  alias ssh='ghostty +ssh --'
+fi
+
 export EDITOR=nvim
 
 export HISTSIZE=10000
