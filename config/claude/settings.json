@@ -1,10 +1,32 @@
 {
-  "model": "opus",
+  "model": "sonnet",
   "statusLine": {
     "type": "command",
     "command": "~/.claude/statusline.sh"
   },
   "enabledPlugins": {
-    "pyright-lsp@claude-plugins-official": true
-  }
+    "jmo-workflow@jmo-skills": true,
+    "figma@synced": false
+  },
+  "extraKnownMarketplaces": {
+    "jmo-skills": {
+      "source": {
+        "source": "github",
+        "repo": "23jmo/jmo-skills"
+      }
+    }
+  },
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "effortLevel": "high"
+    },
+    "claude-haiku-5-5": {
+      "effortLevel": "xhigh"
+    },
+    "claude-sonnet-5-5": {
+      "effortLevel": "medium"
+    }
+  },
+  "awaySummaryEnabled": false,
+  "agentPushNotifEnabled": true
 }

@@ -10,15 +10,15 @@
       "version": "1.0.0 - 2.0.0"
     },
     "friendly-snippets": {
-      "rev": "b4d01b0fdf3c9a549961c2f9ffe8dc09be166219",
+      "rev": "b2ea5c41a150ba72fb656eedb4ed0a86d138d945",
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
     "fzf-lua": {
-      "rev": "ec1b98d3f5f44a1cff1f2c3832af2f09c3d806ca",
+      "rev": "5b88d6f0af7fcb41d4a8bb340bf70d7e3824ee9d",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "gitsigns.nvim": {
-      "rev": "070a5d7b985546cc57e1fc61e5bc507fecac6045",
+      "rev": "d4854fa9a94b5c8b37dd209fb4a19e98e764186f",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "indent-blankline.nvim": {
@@ -30,27 +30,27 @@
       "src": "https://github.com/GCBallesteros/jupytext.nvim"
     },
     "mini.ai": {
-      "rev": "6c39ae7b11abe479fbe1bc81bf00ac6bca7afa07",
+      "rev": "a4f5648dedf435e6306205135d1babb563b55d28",
       "src": "https://github.com/nvim-mini/mini.ai"
     },
     "mini.move": {
-      "rev": "48fcaac289a19b8eff2fd5fe203267d478a8abdc",
+      "rev": "5207c4de3d7db84aadedf72e4a27048d9e46ccf9",
       "src": "https://github.com/nvim-mini/mini.move"
     },
     "mini.pairs": {
-      "rev": "b1c5a726921b7a8c9321e9a7a208aa0571de5810",
+      "rev": "03eb1f0062a2cee5314d1ac3939246e4bb21352e",
       "src": "https://github.com/nvim-mini/mini.pairs"
     },
     "mini.statusline": {
-      "rev": "127997ebef7ef632161203b960c5ef9d158f4810",
+      "rev": "d7133a9a244a8d93ccee42ff37fb9499af5956fb",
       "src": "https://github.com/nvim-mini/mini.statusline"
     },
     "mini.surround": {
-      "rev": "33a2ebe5df8eb4751828fcba133e18ed0fbbdfab",
+      "rev": "5357f00aca51a3b43e7775901b1ad9699f8c2678",
       "src": "https://github.com/nvim-mini/mini.surround"
     },
     "mini.tabline": {
-      "rev": "525b27e98de7cd2a6012d99f45b4fc10676e00e5",
+      "rev": "3dd8686c15e3cfb1bfbc4abfecf699326f1de4c0",
       "src": "https://github.com/nvim-mini/mini.tabline"
     },
     "nvim-colorizer.lua": {
@@ -58,7 +58,7 @@
       "src": "https://github.com/norcalli/nvim-colorizer.lua"
     },
     "nvim-treesitter": {
-      "rev": "728e031f6b11d03d1f0708b7dc4fb0f1d9c8a137",
+      "rev": "a2f694478be07f89c2d03cc17858a8745a400c4b",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "nvim-treesitter-textobjects": {
